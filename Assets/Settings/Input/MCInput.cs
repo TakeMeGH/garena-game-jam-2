@@ -62,6 +62,24 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5670a2e-4582-4462-bf33-f8b73b25276d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""94d94129-2723-42a1-901a-08e534bc6d3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0870ec43-09e0-4e9d-95a2-e2e648fdb946"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3815b844-63a3-4851-8ef2-e87fbaf4fa6c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -192,6 +232,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_LeftAttack = m_Gameplay.FindAction("LeftAttack", throwIfNotFound: true);
+        m_Gameplay_RightAttack = m_Gameplay.FindAction("RightAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UnPause = m_UI.FindAction("UnPause", throwIfNotFound: true);
@@ -266,6 +308,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_LeftAttack;
+    private readonly InputAction m_Gameplay_RightAttack;
     public struct GameplayActions
     {
         private @MCInput m_Wrapper;
@@ -274,6 +318,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @LeftAttack => m_Wrapper.m_Gameplay_LeftAttack;
+        public InputAction @RightAttack => m_Wrapper.m_Gameplay_RightAttack;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -295,6 +341,12 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @LeftAttack.started += instance.OnLeftAttack;
+            @LeftAttack.performed += instance.OnLeftAttack;
+            @LeftAttack.canceled += instance.OnLeftAttack;
+            @RightAttack.started += instance.OnRightAttack;
+            @RightAttack.performed += instance.OnRightAttack;
+            @RightAttack.canceled += instance.OnRightAttack;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -311,6 +363,12 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @LeftAttack.started -= instance.OnLeftAttack;
+            @LeftAttack.performed -= instance.OnLeftAttack;
+            @LeftAttack.canceled -= instance.OnLeftAttack;
+            @RightAttack.started -= instance.OnRightAttack;
+            @RightAttack.performed -= instance.OnRightAttack;
+            @RightAttack.canceled -= instance.OnRightAttack;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -380,6 +438,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnLeftAttack(InputAction.CallbackContext context);
+        void OnRightAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -13,6 +13,8 @@ namespace TKM
         public Action JumpCanceled;
         public Action InteractPerformed;
         public Action PausePerformed;
+        public Action LeftAttackPerformed;
+        public Action RightAttackPerformed;
         #endregion
 
         #region UI
@@ -88,6 +90,21 @@ namespace TKM
             }
         }
 
+        public void OnLeftAttack(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                LeftAttackPerformed?.Invoke();
+            }
+        }
+
+        public void OnRightAttack(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                RightAttackPerformed?.Invoke();
+            }
+        }
         #endregion
 
         #region UI
@@ -99,7 +116,6 @@ namespace TKM
                 UnPausePerformed?.Invoke();
             }
         }
-
         #endregion
     }
 }

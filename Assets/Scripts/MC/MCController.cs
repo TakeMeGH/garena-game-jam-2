@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TKM
 {
@@ -9,7 +10,6 @@ namespace TKM
         #region Component
 
         [field: Header("Component")]
-        [field: SerializeField] public MCGroundChecker GroundDetector;
         public Rigidbody2D Rigidbody { get; private set; }
         public Animator Animator { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }
@@ -17,55 +17,39 @@ namespace TKM
         #endregion
 
         #region SharedData
-        [field: Header("Read Only")]
-        public Vector2 RawDirection { get; private set; }
-        public MCMovementData MovementData;
-        public MCJumpData JumpData;
+        public bool IsNextInputEnabled { get; private set; } = true;
+        public UnityEvent OnAnimationFinished;
         #endregion
 
         #region State
-        public MCMovementState MCMovementState { get; private set; }
-        public MCMovement MCMovement { get; private set; }
-        public MCJump MCJump { get; private set; }
+        public MCIdlingState MCIdlingState { get; private set; }
+        public MCLeftAttackState MCLeftAttackState { get; private set; }
+        public MCRightAttackState MCRightAttackState { get; private set; }
         #endregion
-
-        void OnEnable()
-        {
-            InputReader.MoveEvent += MoveMC;
-        }
-
-        void OnDisable()
-        {
-            InputReader.MoveEvent -= MoveMC;
-
-        }
-
         void Initialize()
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
 
-            MCMovementState = new MCMovementState(this);
-            MCMovement = new MCMovement(this, MovementData);
-            MCJump = new MCJump(this, JumpData);
+            MCIdlingState = new MCIdlingState(this);
+            MCLeftAttackState = new MCLeftAttackState(this);
+            MCRightAttackState = new MCRightAttackState(this);
         }
         void Start()
         {
             Initialize();
-            SwitchState(MCMovementState);
+            SwitchState(MCIdlingState);
         }
 
-        void MoveMC(Vector2 pos)
+        public void SetIsNextInputEnabled(bool status)
         {
-            RawDirection = pos.normalized;
+            IsNextInputEnabled = status;
         }
 
-        public Vector3 GetMoveDirection()
+        public void TriggerAnimationFinished()
         {
-            Vector3 horizontal = transform.right * RawDirection.x;
-            Vector3 vertical = transform.forward * RawDirection.y;
-            return horizontal + vertical;
+            OnAnimationFinished.Invoke();
         }
     }
 }
