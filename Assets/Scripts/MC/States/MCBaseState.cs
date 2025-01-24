@@ -29,7 +29,7 @@ namespace TKM
 
         protected void OnLeftAttackPerformed()
         {
-            _MCController.NextPosition = _MCController.LeftBound.GetNearestEnemyOfType(0, _MCController.DefaultPosition);
+            ProcessDetectorResult(_MCController.LeftBound.GetNearestEnemyOfType(0, _MCController.DefaultPosition));
             _MCController.NextAttackAnimation = _MCController.LEFT_GROUND_ATTACK_ANIMATION_NAME;
             _MCController.NextAttackFacing = -1;
 
@@ -37,11 +37,18 @@ namespace TKM
         }
         protected void OnRightAttackPerformed()
         {
-            _MCController.NextPosition = _MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition);
+            ProcessDetectorResult(_MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
             _MCController.NextAttackAnimation = _MCController.RIGHT_GROUND_ATTACK_ANIMATION_NAME;
             _MCController.NextAttackFacing = 1;
 
             _MCController.SwitchState(_MCController.MCAttackState);
+        }
+
+        void ProcessDetectorResult(DetectorResult detectorResult)
+        {
+            _MCController.NextPosition = detectorResult.EnemyPosition;
+            _MCController.IsAttackMiss = detectorResult.IsMiss;
+            _MCController.NextEnemy = detectorResult.EnemyIdentifier;
         }
 
         protected void ProceedInput()

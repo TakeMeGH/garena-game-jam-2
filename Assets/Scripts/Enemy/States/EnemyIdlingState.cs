@@ -5,6 +5,7 @@ namespace TKM
     public class EnemyIdlingState : IState
     {
         EnemyController _enemyController;
+        float _currentTime;
 
         public EnemyIdlingState(EnemyController _enemyController)
         {
@@ -17,6 +18,7 @@ namespace TKM
 
         public void Exit()
         {
+            _currentTime = 0;
         }
 
         public void PhysicsUpdate()
@@ -25,6 +27,11 @@ namespace TKM
 
         public void Update()
         {
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= _enemyController.IdleWaitTime)
+            {
+                _enemyController.SwitchState(_enemyController.EnemyAttackingState);
+            }
         }
     }
 }

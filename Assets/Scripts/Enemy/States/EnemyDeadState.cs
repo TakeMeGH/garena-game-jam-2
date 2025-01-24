@@ -2,17 +2,17 @@ using UnityEngine;
 
 namespace TKM
 {
-    public class EnemyAttackingState : IState
+    public class EnemyDeadState : IState
     {
         EnemyController _enemyController;
 
-        public EnemyAttackingState(EnemyController _enemyController)
+        public EnemyDeadState(EnemyController _enemyController)
         {
             this._enemyController = _enemyController;
         }
         public void Enter()
         {
-            _enemyController.Animator.Play("Attack");
+            _enemyController.Dead();
         }
 
         public void Exit()

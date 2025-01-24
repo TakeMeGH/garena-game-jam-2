@@ -22,6 +22,7 @@ namespace TKM
         [field: Header("Preset Input Data")]
         public float BufferInputTIme = 0.2f;
         public EnemyType Type;
+        public float MissWaitTime = 2f;
         public Vector2 DefaultPosition { get; private set; }
         public string LEFT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackLeft";
         public string RIGHT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackRight";
@@ -40,6 +41,8 @@ namespace TKM
         public string NextAttackAnimation;
         public int NextAttackFacing;
         public Vector2? NextPosition;
+        public EnemyIdentifier NextEnemy;
+        public bool IsAttackMiss;
         #endregion
 
         #endregion
@@ -47,6 +50,7 @@ namespace TKM
         #region State
         public MCIdlingState MCIdlingState { get; private set; }
         public MCAttackState MCAttackState { get; private set; }
+        public MCMissState MCMissState { get; private set; }
         #endregion
 
         private void OnEnable()
@@ -70,6 +74,7 @@ namespace TKM
 
             MCIdlingState = new MCIdlingState(this);
             MCAttackState = new MCAttackState(this);
+            MCMissState = new MCMissState(this);
         }
         void Start()
         {

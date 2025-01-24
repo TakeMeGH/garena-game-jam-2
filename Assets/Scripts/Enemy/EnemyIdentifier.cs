@@ -6,5 +6,13 @@ namespace TKM
     {
         public EnemyType Type;
         public Transform TeleportPoint;
+
+        public void OnHitEnemy()
+        {
+            if (gameObject.TryGetComponent<EnemyController>(out var enemyController))
+            {
+                enemyController.OnHitEnemy();
+            }
+        }
     }
 }

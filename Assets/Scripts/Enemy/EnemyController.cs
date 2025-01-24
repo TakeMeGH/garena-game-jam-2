@@ -10,7 +10,17 @@ namespace TKM
         public float StopingDistance;
         public float TargetX;
         public EnemyType Type;
+        public float IdleWaitTime = 3f;
         #endregion
+
+        #region Flying Data
+        [field: Header("Flying Data")]
+        public bool IsFlying = false;
+        public float FlyTime = 6;
+        public float FlyMultiplier = 1.25f;
+        public float TargetY;
+        #endregion
+
 
         #region Component
         [field: Header("Component")]
@@ -23,6 +33,8 @@ namespace TKM
         public EnemyIdlingState EnemyIdlingState { get; private set; }
         public EnemyWalkingState EnemyWalkingState { get; private set; }
         public EnemyAttackingState EnemyAttackingState { get; private set; }
+        public EnemyDeadState EnemyDeadState { get; private set; }
+
         #endregion
 
 
@@ -36,11 +48,22 @@ namespace TKM
             EnemyIdlingState = new EnemyIdlingState(this);
             EnemyWalkingState = new EnemyWalkingState(this);
             EnemyAttackingState = new EnemyAttackingState(this);
+            EnemyDeadState = new EnemyDeadState(this);
         }
         void Start()
         {
             Initialize();
             SwitchState(EnemyWalkingState);
+        }
+
+        public void Dead()
+        {
+            Destroy(gameObject);
+        }
+
+        public void OnHitEnemy()
+        {
+            SwitchState(EnemyDeadState);
         }
 
     }

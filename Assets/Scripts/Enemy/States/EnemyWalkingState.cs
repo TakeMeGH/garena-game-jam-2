@@ -9,6 +9,13 @@ namespace TKM
         EnemyController _enemyController;
         float _speedWithDirection;
 
+        #region Flying
+        float _lerpValue;
+        float _currentTime;
+        Vector3 _defaultPostion;
+
+        #endregion
+
         public EnemyWalkingState(EnemyController _enemyController)
         {
             this._enemyController = _enemyController;
@@ -16,10 +23,17 @@ namespace TKM
         public void Enter()
         {
             _enemyController.Animator.SetFloat("Speed", _enemyController.Speed);
-            _speedWithDirection = _enemyController.Speed;
-            if (CalculateDistance() < 0)
+            if (_enemyController.IsFlying == false)
             {
-                _speedWithDirection *= -1;
+                _speedWithDirection = _enemyController.Speed;
+                if (CalculateDistance() < 0)
+                {
+                    _speedWithDirection *= -1;
+                }
+            }
+            else
+            {
+                _defaultPostion = _enemyController.transform.position;
             }
         }
 
@@ -33,10 +47,28 @@ namespace TKM
 
         public void Update()
         {
-            _enemyController.Rigidbody.linearVelocity = new Vector2(_speedWithDirection, 0);
-            if (Math.Abs(CalculateDistance()) < _enemyController.StopingDistance)
+            if (_enemyController.IsFlying == false)
             {
-                _enemyController.SwitchState(_enemyController.EnemyIdlingState);
+                _enemyController.Rigidbody.linearVelocity = new Vector2(_speedWithDirection, 0);
+                if (Math.Abs(CalculateDistance()) < _enemyController.StopingDistance)
+                {
+                    _enemyController.Rigidbody.linearVelocity = Vector2.zero;
+                    _enemyController.SwitchState(_enemyController.EnemyIdlingState);
+                }
+            }
+            else
+            {
+                _currentTime += Time.deltaTime;
+                _lerpValue = Mathf.Min(1f, _currentTime / _enemyController.FlyTime);
+                float newX = Mathf.Lerp(_defaultPostion.x, _enemyController.TargetX, _lerpValue);
+                float newY = Mathf.Lerp(_defaultPostion.y, _enemyController.TargetY, Mathf.Min(1, (float)Math.Log10(1 + _lerpValue * (10 - 1)) * _enemyController.FlyMultiplier));
+
+                _enemyController.transform.position = new Vector2(newX, newY);
+
+                if (_lerpValue >= 1f)
+                {
+                    _enemyController.SwitchState(_enemyController.EnemyIdlingState);
+                }
             }
         }
 
