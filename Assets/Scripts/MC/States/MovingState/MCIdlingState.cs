@@ -14,15 +14,21 @@ namespace TKM
         {
             base.Enter();
 
-            EnableBothAttack();
             _MCController.Animator.Play(IDLE_ANIMATION_NAME);
+            _MCController.transform.position = _MCController.DefaultPosition;
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            ProceedInput();
+
         }
 
         public override void Exit()
         {
             base.Exit();
-
-            DisableBothAttack();
         }
     }
 }

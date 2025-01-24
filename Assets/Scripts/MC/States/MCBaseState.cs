@@ -24,26 +24,41 @@ namespace TKM
         public virtual void Update()
         {
             _MCController.LastInputTime += Time.deltaTime;
+
         }
 
-        protected void EnableBothAttack()
+        protected void OnLeftAttackPerformed()
         {
-            _MCController.InputReader.LeftAttackPerformed += OnLeftAttackPerformed;
-            _MCController.InputReader.RightAttackPerformed += OnRightAttackPerformed;
+            _MCController.NextPosition = _MCController.LeftBound.GetNearestEnemyOfType(0, _MCController.DefaultPosition);
+            _MCController.NextAttackAnimation = _MCController.LEFT_GROUND_ATTACK_ANIMATION_NAME;
+            _MCController.NextAttackFacing = -1;
+
+            _MCController.SwitchState(_MCController.MCAttackState);
         }
-        protected void DisableBothAttack()
+        protected void OnRightAttackPerformed()
         {
-            _MCController.InputReader.LeftAttackPerformed -= OnLeftAttackPerformed;
-            _MCController.InputReader.RightAttackPerformed -= OnRightAttackPerformed;
-        }
-        private void OnLeftAttackPerformed()
-        {
-            _MCController.SwitchState(_MCController.MCLeftAttackState);
-        }
-        private void OnRightAttackPerformed()
-        {
-            _MCController.SwitchState(_MCController.MCRightAttackState);
+            _MCController.NextPosition = _MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition);
+            _MCController.NextAttackAnimation = _MCController.RIGHT_GROUND_ATTACK_ANIMATION_NAME;
+            _MCController.NextAttackFacing = 1;
+
+            _MCController.SwitchState(_MCController.MCAttackState);
         }
 
+        protected void ProceedInput()
+        {
+            if (_MCController.LastInput != 0 && _MCController.LastInputTime <= _MCController.BufferInputTIme)
+            {
+                switch (_MCController.LastInput)
+                {
+                    case 1:
+                        OnRightAttackPerformed();
+                        break;
+                    case -1:
+                        OnLeftAttackPerformed();
+                        break;
+                }
+                _MCController.ResetInput();
+            }
+        }
     }
 }

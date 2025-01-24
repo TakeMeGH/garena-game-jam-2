@@ -5,7 +5,7 @@ namespace TKM
 {
     public class MCAttackState : MCBaseState
     {
-        string LEFT_ATTACK_ANIMATION_NAME = "Attack";
+        bool _isInputEnable = false;
         public MCAttackState(MCController _MCController) : base(_MCController)
         {
         }
@@ -14,8 +14,18 @@ namespace TKM
         {
             base.Enter();
 
-            _MCController.SpriteRenderer.flipX = true;
-            _MCController.Animator.Play(LEFT_ATTACK_ANIMATION_NAME);
+            // Ganti scale Y
+            if (_MCController.NextAttackFacing == 1)
+            {
+                _MCController.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (_MCController.NextAttackFacing == -1)
+            {
+                _MCController.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
+            _MCController.Animator.SetTrigger(_MCController.NextAttackAnimation);
+            _MCController.transform.position = (Vector3)_MCController.NextPosition;
 
             _MCController.OnAnimationFinished += OnAnimationFinished;
             _MCController.EnableNextInput += OnEnableNextInput;
@@ -24,13 +34,18 @@ namespace TKM
         public override void Update()
         {
             base.Update();
+
+            if (_isInputEnable)
+            {
+                ProceedInput();
+            }
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            DisableBothAttack();
+            _isInputEnable = false;
             _MCController.OnAnimationFinished -= OnAnimationFinished;
             _MCController.EnableNextInput -= OnEnableNextInput;
         }
@@ -42,7 +57,7 @@ namespace TKM
 
         public void OnEnableNextInput()
         {
-            EnableBothAttack();
+            _isInputEnable = true;
         }
     }
 }
