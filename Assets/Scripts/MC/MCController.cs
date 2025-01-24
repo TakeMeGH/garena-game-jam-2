@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,10 @@ namespace TKM
 
         #region SharedData
         public bool IsNextInputEnabled { get; private set; } = true;
-        public UnityEvent OnAnimationFinished;
+        public Action OnAnimationFinished;
+        public Action EnableNextInput;
+        public int LastInput;
+        public float LastInputTime;
         #endregion
 
         #region State
@@ -42,9 +46,9 @@ namespace TKM
             SwitchState(MCIdlingState);
         }
 
-        public void SetIsNextInputEnabled(bool status)
+        public void TriggerEnableNextInput()
         {
-            IsNextInputEnabled = status;
+            EnableNextInput.Invoke();
         }
 
         public void TriggerAnimationFinished()

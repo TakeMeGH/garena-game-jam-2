@@ -23,6 +23,7 @@ namespace TKM
 
         public virtual void Update()
         {
+            _MCController.LastInputTime += Time.deltaTime;
         }
 
         protected void EnableBothAttack()
@@ -37,12 +38,10 @@ namespace TKM
         }
         private void OnLeftAttackPerformed()
         {
-            _MCController.SetIsNextInputEnabled(false);
             _MCController.SwitchState(_MCController.MCLeftAttackState);
         }
         private void OnRightAttackPerformed()
         {
-            _MCController.SetIsNextInputEnabled(false);
             _MCController.SwitchState(_MCController.MCRightAttackState);
         }
 

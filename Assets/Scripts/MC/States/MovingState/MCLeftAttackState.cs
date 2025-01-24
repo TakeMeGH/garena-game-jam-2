@@ -6,7 +6,6 @@ namespace TKM
     public class MCLeftAttackState : MCBaseState
     {
         string LEFT_ATTACK_ANIMATION_NAME = "Attack";
-        bool _isNextInputAlreadyEnabled = false;
         public MCLeftAttackState(MCController _MCController) : base(_MCController)
         {
         }
@@ -15,22 +14,16 @@ namespace TKM
         {
             base.Enter();
 
-            _isNextInputAlreadyEnabled = false;
             _MCController.SpriteRenderer.flipX = true;
             _MCController.Animator.Play(LEFT_ATTACK_ANIMATION_NAME);
 
-            _MCController.OnAnimationFinished.AddListener(OnAnimationFinished);
+            _MCController.OnAnimationFinished += OnAnimationFinished;
+            _MCController.EnableNextInput += OnEnableNextInput;
         }
 
         public override void Update()
         {
             base.Update();
-
-            if (_MCController.IsNextInputEnabled == true && _isNextInputAlreadyEnabled == false)
-            {
-                _isNextInputAlreadyEnabled = true;
-                EnableBothAttack();
-            }
         }
 
         public override void Exit()
@@ -38,12 +31,18 @@ namespace TKM
             base.Exit();
 
             DisableBothAttack();
-            _MCController.OnAnimationFinished.RemoveListener(OnAnimationFinished);
+            _MCController.OnAnimationFinished -= OnAnimationFinished;
+            _MCController.EnableNextInput -= OnEnableNextInput;
         }
 
         public void OnAnimationFinished()
         {
             _MCController.SwitchState(_MCController.MCIdlingState);
+        }
+
+        public void OnEnableNextInput()
+        {
+            EnableBothAttack();
         }
     }
 }
