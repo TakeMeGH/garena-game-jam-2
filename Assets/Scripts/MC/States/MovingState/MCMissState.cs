@@ -17,6 +17,7 @@ namespace TKM
 
         public override void Enter()
         {
+            _MCController.StunAnimator.Play("Stun");
             AudioManager.Instance.PlaySFX(SFX.Player_missedatk);
             _originalPosition = _MCController.transform.position;
             _isShaking = true;

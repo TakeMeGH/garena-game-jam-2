@@ -19,6 +19,7 @@ namespace TKM
         [field: Header("Component")]
         public EnemyDetector LeftBound;
         public EnemyDetector RightBound;
+        public Animator StunAnimator;
         public Rigidbody2D Rigidbody { get; private set; }
         public Animator Animator { get; private set; }
         public SpriteRenderer SpriteRenderer { get; private set; }

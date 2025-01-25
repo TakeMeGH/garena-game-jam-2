@@ -22,6 +22,7 @@ namespace TKM
         }
         public virtual void Enter()
         {
+            _MCController.StunAnimator.Play("Idle");
             blurMaterial = _MCController.SpriteRenderer.material;
             blurMaterial.SetFloat(blurProperty, _initialBlurAmount);
             _isTransitioning = true;
