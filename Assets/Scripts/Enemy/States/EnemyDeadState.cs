@@ -13,6 +13,7 @@ namespace TKM
         public void Enter()
         {
             Spawner.Instance.IncreaseKillCount();
+            VFXSpawner.Instance.PlayDeadVFX(_enemyController.transform.position);
             _enemyController.Dead();
         }
 
