@@ -9,6 +9,7 @@ namespace TKM
 
         public void OnHitEnemy()
         {
+            if (this == null || gameObject == null) return;
             if (gameObject.TryGetComponent<EnemyController>(out var enemyController))
             {
                 enemyController.OnHitEnemy();

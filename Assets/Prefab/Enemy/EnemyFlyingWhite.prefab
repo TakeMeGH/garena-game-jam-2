@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754118251090214157, guid: ef8e0dd755c2ca94486b7c45617d3cc2, type: 3}
       propertyPath: m_Name
-      value: EnemyFlying
+      value: EnemyFlyingWhite
       objectReference: {fileID: 0}
     - target: {fileID: 6871449039975676947, guid: ef8e0dd755c2ca94486b7c45617d3cc2, type: 3}
       propertyPath: m_Simulated
@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916789040903869467, guid: ef8e0dd755c2ca94486b7c45617d3cc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916789040903869467, guid: ef8e0dd755c2ca94486b7c45617d3cc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916789040903869467, guid: ef8e0dd755c2ca94486b7c45617d3cc2, type: 3}
       propertyPath: m_LocalPosition.z

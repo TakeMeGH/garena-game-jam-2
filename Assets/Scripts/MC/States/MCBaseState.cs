@@ -30,7 +30,7 @@ namespace TKM
         protected void OnLeftAttackPerformed()
         {
             ProcessDetectorResult(_MCController.LeftBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
-            _MCController.NextAttackAnimation = _MCController.LEFT_GROUND_ATTACK_ANIMATION_NAME;
+            _MCController.NextAttackAnimation = _MCController.DOWN_ATTACK_ANIMATION_NAME;
             _MCController.NextAttackFacing = -1;
 
             _MCController.SwitchState(_MCController.MCAttackState);
@@ -38,7 +38,7 @@ namespace TKM
         protected void OnRightAttackPerformed()
         {
             ProcessDetectorResult(_MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
-            _MCController.NextAttackAnimation = _MCController.RIGHT_GROUND_ATTACK_ANIMATION_NAME;
+            _MCController.NextAttackAnimation = _MCController.DOWN_ATTACK_ANIMATION_NAME;
             _MCController.NextAttackFacing = 1;
 
             _MCController.SwitchState(_MCController.MCAttackState);

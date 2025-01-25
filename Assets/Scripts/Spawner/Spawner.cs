@@ -24,6 +24,7 @@ namespace TKM
     {
         public GameObject PrefabEnemy;
         public Transform EnemyTransform;
+        public float Weight;
     }
 
     public class Spawner : MonoBehaviour
@@ -42,6 +43,7 @@ namespace TKM
         }
         [SerializeField] List<Wave> _waves = new();
         [SerializeField] List<EnemyData> _enemies;
+        [SerializeField] List<EnemyData> _perks;
         [SerializeField] PairRange PosXLeft;
         [SerializeField] PairRange PosXRight;
         [SerializeField] PairRange PosY;
@@ -67,6 +69,7 @@ namespace TKM
             {
                 yield return new WaitForSeconds(_waves[_waveIndex].SpawnSpeed);
                 SpawnEnemy();
+                SpawnPerks();
             }
         }
 
@@ -94,7 +97,21 @@ namespace TKM
 
             float randomPosY = UnityEngine.Random.Range(PosY.Left, PosY.Right);
             spawnedEnemy.GetComponent<EnemyController>().SetRandomData(randomPosX, randomPosY, _waves[_waveIndex].IdleTime);
-
         }
+        private void SpawnPerks()
+        {
+            for (int i = 0; i < _perks.Count; i++)
+            {
+                float randomValue = UnityEngine.Random.Range(0f, 1f);
+                if (randomValue <= _perks[i].Weight)
+                {
+                    Debug.Log(randomValue + " " + _perks[i].Weight);
+                    Instantiate(_perks[i].PrefabEnemy, _perks[i].EnemyTransform.position, _perks[i].EnemyTransform.rotation);
+                    if (i % 2 == 0) i++;
+                }
+            }
+        }
+
+
     }
 }

@@ -30,8 +30,9 @@ namespace TKM
         public EnemyType Type;
         public float MissWaitTime = 2f;
         public Vector2 DefaultPosition { get; private set; }
-        public string LEFT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackLeft";
-        public string RIGHT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackRight";
+        public string DOWN_ATTACK_ANIMATION_NAME { get; private set; } = "AttackDown";
+        public string UP_ATTACK_ANIMATION_NAME { get; private set; } = "AttackUp";
+
         #endregion
 
         #region SharedData

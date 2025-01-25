@@ -73,13 +73,13 @@ namespace TKM
                 return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
             }
 
-            selectedEnemy = SelectObjectOfType((EnemyType)(1 - (int)type), position);
+            selectedEnemy = SelectObjectOfType((EnemyType)(1 - (int)type), position, true);
 
             if (selectedEnemy != null)
             {
                 return new DetectorResult(selectedEnemy, true, selectedEnemy.TeleportPoint.position);
             }
-            return new DetectorResult(null, true, position);
+            return new DetectorResult(null, true, new Vector2(transform.position.x, position.y));
 
             // if (selectedEnemy == null)
             // {
@@ -99,7 +99,7 @@ namespace TKM
             // return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
         }
 
-        EnemyIdentifier SelectObjectOfType(EnemyType type, Vector2 position)
+        EnemyIdentifier SelectObjectOfType(EnemyType type, Vector2 position, bool dontRemove = false)
         {
             EnemyIdentifier selectedEnemy = null;
             int index = -1;
@@ -125,7 +125,7 @@ namespace TKM
                     }
                 }
             }
-            if (selectedIndex != -1) _enemies.RemoveAt(selectedIndex);
+            if (selectedIndex != -1 && dontRemove == false) _enemies.RemoveAt(selectedIndex);
             return selectedEnemy;
         }
     }
