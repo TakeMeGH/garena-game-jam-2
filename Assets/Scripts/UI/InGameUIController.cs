@@ -5,7 +5,7 @@ namespace TKM
 {
     public class InGameUIController : MonoBehaviour
     {
-        [SerializeField] InputReader _inputReader;
+        [SerializeField] InputReader _inputReader; 
         [Header("Pause Menu")]
         [SerializeField] CanvasGroup _pauseMenu;
         [SerializeField] CanvasGroup _pauseMouseMenu;
