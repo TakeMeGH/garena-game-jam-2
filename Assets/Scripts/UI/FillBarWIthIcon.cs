@@ -18,12 +18,13 @@ namespace TKM
             if (fillBar != null)
                 fillBarRect = fillBar.GetComponent<RectTransform>();
 
-            TotalAllKill = Spawner.Instance.GetAllNeededKill();
+            if (Spawner.Instance != null)
+                TotalAllKill = Spawner.Instance.GetAllNeededKill();
         }
 
         void Update()
         {
-            if (fillBar != null && icon != null)
+            if (fillBar != null && icon != null && Spawner.Instance != null)
             {
                 fillBar.fillAmount = (float)Spawner.Instance.TotalKillCount / TotalAllKill;
                 // Get the width of the fill bar
