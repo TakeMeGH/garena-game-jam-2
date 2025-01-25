@@ -35,8 +35,6 @@ namespace TKM
                 GameObject popThreadObject = new GameObject("PopThread");
                 PopThread popThread = popThreadObject.AddComponent<PopThread>();
                 popThread.Activate();
-                Debug.Log("Health: " + Health);
-
             }
         }
     }
