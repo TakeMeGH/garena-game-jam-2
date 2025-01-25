@@ -4,10 +4,16 @@ using UnityEngine.Events;
 
 namespace TKM
 {
+    public enum InputType
+    {
+        Keyboard,
+        Mouse
+    }
     public class MCController : StateMachine
     {
         [field: Header("Input Reader")]
         [field: SerializeField] public InputReader InputReader;
+        [field: SerializeField] public InputType InputType;
         #region Component
 
         [field: Header("Component")]
@@ -22,43 +28,46 @@ namespace TKM
         [field: Header("Preset Input Data")]
         public float BufferInputTIme = 0.2f;
         public EnemyType Type;
+        public float MissWaitTime = 2f;
         public Vector2 DefaultPosition { get; private set; }
-        public string LEFT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackLeft";
-        public string RIGHT_GROUND_ATTACK_ANIMATION_NAME { get; private set; } = "AttackRight";
+        public string DOWN_ATTACK_ANIMATION_NAME { get; private set; } = "AttackDown";
+        public string UP_ATTACK_ANIMATION_NAME { get; private set; } = "AttackUp";
+
         #endregion
 
         #region SharedData
         [field: Header("Shared Data (ReadOnly)")]
-
-        public bool IsNextInputEnabled { get; private set; } = true;
-        public Action OnAnimationFinished;
-        public Action EnableNextInput;
         public int LastInput;
         public float LastInputTime;
+        public bool IsNextInputEnabled { get; private set; } = true;
 
         #region Attack Info
         public string NextAttackAnimation;
         public int NextAttackFacing;
         public Vector2? NextPosition;
+        public EnemyIdentifier NextEnemy;
+        public bool IsAttackMiss;
         #endregion
-
+        public Action OnAnimationFinished;
+        public Action EnableNextInput;
         #endregion
 
         #region State
         public MCIdlingState MCIdlingState { get; private set; }
         public MCAttackState MCAttackState { get; private set; }
+        public MCMissState MCMissState { get; private set; }
         #endregion
 
         private void OnEnable()
         {
-            InputReader.LeftAttackPerformed += OnLeftAttackPerformed;
-            InputReader.RightAttackPerformed += OnRightAttackPerformed;
+            InputReader.LeftAttackPerformed[(int)InputType] += OnLeftAttackPerformed;
+            InputReader.RightAttackPerformed[(int)InputType] += OnRightAttackPerformed;
         }
 
         private void OnDisable()
         {
-            InputReader.LeftAttackPerformed -= OnLeftAttackPerformed;
-            InputReader.RightAttackPerformed -= OnRightAttackPerformed;
+            InputReader.LeftAttackPerformed[(int)InputType] -= OnLeftAttackPerformed;
+            InputReader.RightAttackPerformed[(int)InputType] -= OnRightAttackPerformed;
         }
         void Initialize()
         {
@@ -70,6 +79,7 @@ namespace TKM
 
             MCIdlingState = new MCIdlingState(this);
             MCAttackState = new MCAttackState(this);
+            MCMissState = new MCMissState(this);
         }
         void Start()
         {

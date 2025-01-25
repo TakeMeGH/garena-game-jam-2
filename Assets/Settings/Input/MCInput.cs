@@ -80,6 +80,24 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftAttackMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""e7b8bf99-027b-465c-9f4f-1dbfbe93c962"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightAttackMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca450f97-5986-441f-bb68-a55508f4e7bc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +210,28 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""action"": ""RightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdfe6e6a-e330-4860-866f-73cb693fe07d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftAttackMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f281bd6f-c311-4510-890c-341ceeae574c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightAttackMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -234,6 +274,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_LeftAttack = m_Gameplay.FindAction("LeftAttack", throwIfNotFound: true);
         m_Gameplay_RightAttack = m_Gameplay.FindAction("RightAttack", throwIfNotFound: true);
+        m_Gameplay_LeftAttackMouse = m_Gameplay.FindAction("LeftAttackMouse", throwIfNotFound: true);
+        m_Gameplay_RightAttackMouse = m_Gameplay.FindAction("RightAttackMouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UnPause = m_UI.FindAction("UnPause", throwIfNotFound: true);
@@ -310,6 +352,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_LeftAttack;
     private readonly InputAction m_Gameplay_RightAttack;
+    private readonly InputAction m_Gameplay_LeftAttackMouse;
+    private readonly InputAction m_Gameplay_RightAttackMouse;
     public struct GameplayActions
     {
         private @MCInput m_Wrapper;
@@ -320,6 +364,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @LeftAttack => m_Wrapper.m_Gameplay_LeftAttack;
         public InputAction @RightAttack => m_Wrapper.m_Gameplay_RightAttack;
+        public InputAction @LeftAttackMouse => m_Wrapper.m_Gameplay_LeftAttackMouse;
+        public InputAction @RightAttackMouse => m_Wrapper.m_Gameplay_RightAttackMouse;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -347,6 +393,12 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @RightAttack.started += instance.OnRightAttack;
             @RightAttack.performed += instance.OnRightAttack;
             @RightAttack.canceled += instance.OnRightAttack;
+            @LeftAttackMouse.started += instance.OnLeftAttackMouse;
+            @LeftAttackMouse.performed += instance.OnLeftAttackMouse;
+            @LeftAttackMouse.canceled += instance.OnLeftAttackMouse;
+            @RightAttackMouse.started += instance.OnRightAttackMouse;
+            @RightAttackMouse.performed += instance.OnRightAttackMouse;
+            @RightAttackMouse.canceled += instance.OnRightAttackMouse;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -369,6 +421,12 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @RightAttack.started -= instance.OnRightAttack;
             @RightAttack.performed -= instance.OnRightAttack;
             @RightAttack.canceled -= instance.OnRightAttack;
+            @LeftAttackMouse.started -= instance.OnLeftAttackMouse;
+            @LeftAttackMouse.performed -= instance.OnLeftAttackMouse;
+            @LeftAttackMouse.canceled -= instance.OnLeftAttackMouse;
+            @RightAttackMouse.started -= instance.OnRightAttackMouse;
+            @RightAttackMouse.performed -= instance.OnRightAttackMouse;
+            @RightAttackMouse.canceled -= instance.OnRightAttackMouse;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -440,6 +498,8 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnLeftAttack(InputAction.CallbackContext context);
         void OnRightAttack(InputAction.CallbackContext context);
+        void OnLeftAttackMouse(InputAction.CallbackContext context);
+        void OnRightAttackMouse(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -19,10 +19,8 @@ namespace TKM
         // Update is called once per frame
         void Update()
         {
-            float e = Mathf.Exp(1f);
-
             float newX = Mathf.Lerp(defaultPostion.x, targetPostion.position.x, _lerpValue);
-            float newY = Mathf.Lerp(defaultPostion.y, targetPostion.position.y, Mathf.Min(1, (float)Math.Log(1 + _lerpValue * (e - 1)) * _multiplier));
+            float newY = Mathf.Lerp(defaultPostion.y, targetPostion.position.y, Mathf.Min(1, (float)Math.Log10(1 + _lerpValue * (10 - 1)) * _multiplier));
 
             transform.position = new Vector2(newX, newY);
         }

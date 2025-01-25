@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TKM
 {
-    public class EnemyAttackingState : MonoBehaviour
+    public class EnemyAttackingState : IState
     {
         EnemyController _enemyController;
 
@@ -12,10 +12,18 @@ namespace TKM
         }
         public void Enter()
         {
+            _enemyController.Animator.Play("Attack");
+
+            _enemyController.OnAnimationFinished += OnAnimationFinished;
+            _enemyController.EnableNextInput += OnEnableNextInput;
+
         }
 
         public void Exit()
         {
+            _enemyController.OnAnimationFinished -= OnAnimationFinished;
+            _enemyController.EnableNextInput -= OnEnableNextInput;
+
         }
 
         public void PhysicsUpdate()
@@ -25,5 +33,16 @@ namespace TKM
         public void Update()
         {
         }
+
+        public void OnAnimationFinished()
+        {
+            _enemyController.SwitchState(_enemyController.EnemyDeadState);
+        }
+
+        public void OnEnableNextInput()
+        {
+            Crystal.Instance.Attacked();
+        }
+
     }
 }

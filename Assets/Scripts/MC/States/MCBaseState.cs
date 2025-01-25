@@ -29,19 +29,41 @@ namespace TKM
 
         protected void OnLeftAttackPerformed()
         {
-            _MCController.NextPosition = _MCController.LeftBound.GetNearestEnemyOfType(0, _MCController.DefaultPosition);
-            _MCController.NextAttackAnimation = _MCController.LEFT_GROUND_ATTACK_ANIMATION_NAME;
+            ProcessDetectorResult(_MCController.LeftBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
+            if (_MCController.DefaultPosition.y < _MCController.NextPosition?.y)
+            {
+                _MCController.NextAttackAnimation = _MCController.UP_ATTACK_ANIMATION_NAME;
+            }
+            else
+            {
+                _MCController.NextAttackAnimation = _MCController.DOWN_ATTACK_ANIMATION_NAME;
+            }
             _MCController.NextAttackFacing = -1;
 
             _MCController.SwitchState(_MCController.MCAttackState);
         }
         protected void OnRightAttackPerformed()
         {
-            _MCController.NextPosition = _MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition);
-            _MCController.NextAttackAnimation = _MCController.RIGHT_GROUND_ATTACK_ANIMATION_NAME;
+            ProcessDetectorResult(_MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
+            if (_MCController.DefaultPosition.y < _MCController.NextPosition?.y)
+            {
+                _MCController.NextAttackAnimation = _MCController.UP_ATTACK_ANIMATION_NAME;
+            }
+            else
+            {
+                _MCController.NextAttackAnimation = _MCController.DOWN_ATTACK_ANIMATION_NAME;
+            }
             _MCController.NextAttackFacing = 1;
 
             _MCController.SwitchState(_MCController.MCAttackState);
+        }
+
+        void ProcessDetectorResult(DetectorResult detectorResult)
+        {
+            Debug.Log("MISS " + detectorResult.IsMiss + " " + _MCController.Type);
+            _MCController.NextPosition = detectorResult.EnemyPosition;
+            _MCController.IsAttackMiss = detectorResult.IsMiss;
+            _MCController.NextEnemy = detectorResult.EnemyIdentifier;
         }
 
         protected void ProceedInput()

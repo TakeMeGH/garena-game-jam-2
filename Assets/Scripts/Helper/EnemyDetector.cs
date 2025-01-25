@@ -7,7 +7,22 @@ namespace TKM
     public enum EnemyType
     {
         White,
-        Black
+        Black,
+        PopThread,
+        Bomb,
+    }
+    public class DetectorResult
+    {
+        public EnemyIdentifier EnemyIdentifier;
+        public bool IsMiss;
+        public Vector2 EnemyPosition;
+
+        public DetectorResult(EnemyIdentifier enemyIdentifier, bool isMiss, Vector2 enemyPosition)
+        {
+            EnemyIdentifier = enemyIdentifier;
+            IsMiss = isMiss;
+            EnemyPosition = enemyPosition;
+        }
     }
     public class EnemyDetector : MonoBehaviour
     {
@@ -16,19 +31,86 @@ namespace TKM
         {
             if (other.gameObject.TryGetComponent<EnemyIdentifier>(out var enemy))
             {
-                Debug.Log("TRIGGER");
                 _enemies.Add(enemy);
             }
         }
 
-        public Vector2? GetNearestEnemyOfType(EnemyType type, Vector2 position)
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<EnemyIdentifier>(out var enemy))
+            {
+                for (int i = 0; i < _enemies.Count; i++)
+                {
+                    if (_enemies[i].GetInstanceID() == enemy.GetInstanceID())
+                    {
+                        _enemies.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public DetectorResult GetNearestEnemyOfType(EnemyType type, Vector2 position)
+        {
+            EnemyIdentifier selectedEnemy = SelectObjectOfType(type, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType(EnemyType.PopThread, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType(EnemyType.Bomb, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType((EnemyType)(1 - (int)type), position, true);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, true, selectedEnemy.TeleportPoint.position);
+            }
+            return new DetectorResult(null, true, new Vector2(transform.position.x, position.y));
+
+            // if (selectedEnemy == null)
+            // {
+            //     while (_enemies.Count > 0 && _enemies[0] == null)
+            //     {
+            //         _enemies.RemoveAt(0);
+            //     }
+            //     if (_enemies.Count > 0)
+            //     {
+            //         return new DetectorResult(_enemies[0], true, _enemies[0].TeleportPoint.position);
+            //     }
+            //     else
+            //     {
+            //         return new DetectorResult(null, true, position);
+            //     }
+            // }
+            // return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+        }
+
+        EnemyIdentifier SelectObjectOfType(EnemyType type, Vector2 position, bool dontRemove = false)
         {
             EnemyIdentifier selectedEnemy = null;
+            int index = -1;
+            int selectedIndex = -1;
             foreach (EnemyIdentifier enemy in _enemies)
             {
+                index++;
                 if (selectedEnemy == null && enemy.Type == type)
                 {
                     selectedEnemy = enemy;
+                    selectedIndex = index;
                     continue;
                 }
 
@@ -39,11 +121,12 @@ namespace TKM
                     if (newDistance < distance)
                     {
                         selectedEnemy = enemy;
+                        selectedIndex = index;
                     }
                 }
             }
-            if (selectedEnemy == null) return null;
-            return selectedEnemy.TeleportPoint.position;
+            if (selectedIndex != -1 && dontRemove == false) _enemies.RemoveAt(selectedIndex);
+            return selectedEnemy;
         }
     }
 }
