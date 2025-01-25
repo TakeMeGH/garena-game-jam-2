@@ -11,16 +11,21 @@ namespace TKM
 
         private RectTransform fillBarRect;
 
+        int TotalAllKill = 0;
+
         void Start()
         {
             if (fillBar != null)
                 fillBarRect = fillBar.GetComponent<RectTransform>();
+
+            TotalAllKill = Spawner.Instance.GetAllNeededKill();
         }
 
         void Update()
         {
             if (fillBar != null && icon != null)
             {
+                fillBar.fillAmount = (float)Spawner.Instance.TotalKillCount / TotalAllKill;
                 // Get the width of the fill bar
                 float barWidth = fillBarRect.rect.width;
 
@@ -32,5 +37,5 @@ namespace TKM
                 icon.anchoredPosition = new Vector2(iconXPosition, icon.anchoredPosition.y);
             }
         }
-    }   
+    }
 }

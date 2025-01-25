@@ -51,6 +51,7 @@ namespace TKM
         [SerializeField] VoidEvent _onWinConditions;
         int _killCount = 0;
         int _waveIndex = -1;
+        public int TotalKillCount = 0;
 
         private void Start()
         {
@@ -82,6 +83,7 @@ namespace TKM
         public void IncreaseKillCount()
         {
             _killCount++;
+            TotalKillCount++;
             if (_killCount == _waves[_waveIndex].EnemyCount)
             {
                 StartNextWave();
@@ -133,6 +135,14 @@ namespace TKM
             }
         }
 
-
+        public int GetAllNeededKill()
+        {
+            int total = 0;
+            foreach (Wave wave in _waves)
+            {
+                total += wave.EnemyCount;
+            }
+            return total;
+        }
     }
 }

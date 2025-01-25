@@ -64,7 +64,7 @@ namespace TKM
         protected void OnLeftAttackPerformed()
         {
             ProcessDetectorResult(_MCController.LeftBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
-            if (_MCController.DefaultPosition.y < _MCController.NextPosition?.y)
+            if (Mathf.Abs(_MCController.DefaultPosition.y - (float)_MCController.NextPosition?.y) >= 2f)
             {
                 _MCController.NextAttackAnimation = _MCController.UP_ATTACK_ANIMATION_NAME;
             }
@@ -79,7 +79,7 @@ namespace TKM
         protected void OnRightAttackPerformed()
         {
             ProcessDetectorResult(_MCController.RightBound.GetNearestEnemyOfType(_MCController.Type, _MCController.DefaultPosition));
-            if (_MCController.DefaultPosition.y < _MCController.NextPosition?.y)
+            if (Mathf.Abs(_MCController.DefaultPosition.y - (float)_MCController.NextPosition?.y) >= 2f)
             {
                 _MCController.NextAttackAnimation = _MCController.UP_ATTACK_ANIMATION_NAME;
             }
