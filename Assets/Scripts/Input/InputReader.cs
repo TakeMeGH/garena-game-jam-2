@@ -13,12 +13,18 @@ namespace TKM
         public Action JumpCanceled;
         public Action InteractPerformed;
         public Action PausePerformed;
+        public Action PauseMousePerformed;
+
         public Action[] LeftAttackPerformed = new Action[3];
         public Action[] RightAttackPerformed = new Action[3];
         #endregion
 
         #region UI
         public Action UnPausePerformed;
+        public Action KeyboardAPerformed;
+        public Action KeyboardBPerformed;
+        public Action MouseAPerformed;
+        public Action MouseBPerformed;
         #endregion
 
 
@@ -90,6 +96,13 @@ namespace TKM
             }
         }
 
+        public void OnPauseMouse(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                PauseMousePerformed?.Invoke();
+            }
+        }
         public void OnLeftAttack(InputAction.CallbackContext context)
         {
             if (context.phase == InputActionPhase.Performed)
@@ -131,6 +144,38 @@ namespace TKM
             if (context.phase == InputActionPhase.Performed)
             {
                 UnPausePerformed?.Invoke();
+            }
+        }
+
+        public void OnKeyboardA(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                KeyboardAPerformed?.Invoke();
+            }
+        }
+
+        public void OnKeyboardB(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Canceled)
+            {
+                KeyboardBPerformed?.Invoke();
+            }
+        }
+
+        public void OnMouseA(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                MouseAPerformed?.Invoke();
+            }
+        }
+
+        public void OnMouseB(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                MouseBPerformed?.Invoke();
             }
         }
 

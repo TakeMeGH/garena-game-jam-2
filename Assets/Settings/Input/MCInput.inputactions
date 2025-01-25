@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PauseMouse",
+                    "type": "Button",
+                    "id": "7b72b746-d903-4ba4-b8f3-59c4a723de14",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "LeftAttack",
                     "type": "Button",
                     "id": "f5670a2e-4582-4462-bf33-f8b73b25276d",
@@ -210,6 +219,17 @@
                     "action": "RightAttackMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "343ba23c-cb82-405a-8b33-ff12c20f3e73",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -225,6 +245,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "KeyboardA",
+                    "type": "Button",
+                    "id": "868596a8-562d-45c7-8aa9-b03eb3fc6f0e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "KeyboardB",
+                    "type": "Button",
+                    "id": "9f0a2cf5-4da5-4339-9244-66ec5b7cbbbc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseA",
+                    "type": "Button",
+                    "id": "fe5d4645-a416-4e6c-811c-43a010292e90",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseB",
+                    "type": "Button",
+                    "id": "b864548b-a73c-455e-9f22-e1eed7f2b24a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -236,6 +292,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "UnPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efa73bf3-dbb4-4ecc-8d3f-799d7481b9e8",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KeyboardA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4f2d903-9f0c-4951-9f14-4ba5cb19f65d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f762a1d-b716-4821-b527-0ad66778a195",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a56e57b3-48d0-4682-ac69-1e81f133bbb9",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "KeyboardB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
