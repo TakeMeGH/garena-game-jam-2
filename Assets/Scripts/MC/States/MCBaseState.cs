@@ -40,11 +40,10 @@ namespace TKM
 
         public virtual void Update()
         {
+            _MCController.LastInputTime += Time.deltaTime;
+
             if (_isTransitioning)
             {
-
-                _MCController.LastInputTime += Time.deltaTime;
-
                 _elapsedTime += Time.deltaTime;
 
                 // Calculate the interpolated blur value

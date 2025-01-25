@@ -26,6 +26,8 @@ namespace TKM
         public override void Update()
         {
 
+            _MCController.LastInputTime += Time.deltaTime;
+
             _currentTime += Time.deltaTime;
 
             if (_isShaking)

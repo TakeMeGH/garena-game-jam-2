@@ -1,4 +1,6 @@
+using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TKM
 {
@@ -8,6 +10,12 @@ namespace TKM
         float _lastAttackTime;
         readonly float INVULNERABLE_TIME = 1f;
         [SerializeField] VoidEvent _onLoseConditions;
+        [Header("Icons")]
+        [SerializeField] UnityEngine.UI.Image[] _icons;
+        [SerializeField] Sprite _loseHealthIcons;
+        [Header("Icons")]
+        [SerializeField] Sprite[] _spoleStateImages;
+        [SerializeField] SpriteRenderer _spoleRenderer;
 
         public static Crystal Instance
         {
@@ -42,6 +50,9 @@ namespace TKM
                 GameObject popThreadObject = new GameObject("PopThread");
                 PopThread popThread = popThreadObject.AddComponent<PopThread>();
                 popThread.Activate();
+
+                _spoleRenderer.sprite = _spoleStateImages[Health - 1];
+                _icons[Health].sprite = _loseHealthIcons;
             }
         }
     }

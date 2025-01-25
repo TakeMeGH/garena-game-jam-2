@@ -154,6 +154,12 @@ MonoBehaviour:
   - PrefabEnemy: {fileID: 8376248467317085175, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
     EnemyTransform: {fileID: 6676008759237749283}
     Weight: 0.05
+  - PrefabEnemy: {fileID: 8336724042675787438, guid: 85dbd0528d249204d93e7c2887575f53, type: 3}
+    EnemyTransform: {fileID: 276814323702712927}
+    Weight: 0.025
+  - PrefabEnemy: {fileID: 8336724042675787438, guid: 85dbd0528d249204d93e7c2887575f53, type: 3}
+    EnemyTransform: {fileID: 6970300455898877359}
+    Weight: 0.025
   PosXLeft:
     Left: -4.9
     Right: -4.3

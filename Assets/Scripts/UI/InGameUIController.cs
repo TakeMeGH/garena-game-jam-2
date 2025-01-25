@@ -11,6 +11,8 @@ namespace TKM
         [SerializeField] CanvasGroup _pauseMouseMenu;
         [SerializeField] CanvasGroup _loseMenu;
         [SerializeField] CanvasGroup _winMenu;
+        [SerializeField] CanvasGroup _overlay;
+
         [Header("Event")]
         [SerializeField] VoidEvent _onLoseConditions;
         [SerializeField] VoidEvent _onWinConditions;
@@ -36,6 +38,7 @@ namespace TKM
 
         private void OnPause()
         {
+            _overlay.alpha = 0f;
             _pauseMenu.alpha = 1;
             _pauseMenu.blocksRaycasts = true;
             _pauseMenu.interactable = true;
@@ -46,6 +49,7 @@ namespace TKM
 
         private void OnPauseMouse()
         {
+            _overlay.alpha = 0f;
             _pauseMouseMenu.alpha = 1;
             _pauseMouseMenu.blocksRaycasts = true;
             _pauseMouseMenu.interactable = true;
@@ -62,6 +66,7 @@ namespace TKM
             _pauseMenu.alpha = 0;
             _pauseMenu.blocksRaycasts = false;
             _pauseMenu.interactable = false;
+            _overlay.alpha = 1f;
         }
 
         public void OnUnPauseMouse()
@@ -71,10 +76,12 @@ namespace TKM
             _pauseMouseMenu.alpha = 0;
             _pauseMouseMenu.blocksRaycasts = false;
             _pauseMouseMenu.interactable = false;
+            _overlay.alpha = 1f;
         }
 
         private void OnWinConditions()
         {
+            _overlay.alpha = 0f;
             AudioManager.Instance.PlayBGM(BGM.WinCond);
             _winMenu.alpha = 1;
             _winMenu.blocksRaycasts = true;
@@ -85,6 +92,7 @@ namespace TKM
 
         private void OnLoseConditions()
         {
+            _overlay.alpha = 0f;
             AudioManager.Instance.PlayBGM(BGM.LoseCond);
             _loseMenu.alpha = 1;
             _loseMenu.blocksRaycasts = true;
