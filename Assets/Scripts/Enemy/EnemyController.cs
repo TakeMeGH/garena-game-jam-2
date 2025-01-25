@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TKM
@@ -9,7 +10,6 @@ namespace TKM
         public float Speed;
         public float StopingDistance;
         public float TargetX;
-        public EnemyType Type;
         public float IdleWaitTime = 3f;
         #endregion
 
@@ -20,8 +20,6 @@ namespace TKM
         public float FlyMultiplier = 1.25f;
         public float TargetY;
         #endregion
-
-
         #region Component
         [field: Header("Component")]
         public Rigidbody2D Rigidbody { get; private set; }
@@ -29,6 +27,10 @@ namespace TKM
         public SpriteRenderer SpriteRenderer { get; private set; }
         #endregion
 
+        #region SharedData
+        public Action OnAnimationFinished;
+        public Action EnableNextInput;
+        #endregion
         #region State
         public EnemyIdlingState EnemyIdlingState { get; private set; }
         public EnemyWalkingState EnemyWalkingState { get; private set; }
@@ -40,7 +42,6 @@ namespace TKM
 
         void Initialize()
         {
-            // DefaultPosition = transform.position;
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -64,6 +65,23 @@ namespace TKM
         public void OnHitEnemy()
         {
             SwitchState(EnemyDeadState);
+        }
+
+        public void TriggerEnableNextInput()
+        {
+            EnableNextInput?.Invoke();
+        }
+
+        public void TriggerAnimationFinished()
+        {
+            OnAnimationFinished?.Invoke();
+        }
+
+        public void SetRandomData(float posX, float posY, float IdleTime)
+        {
+            TargetX = posX;
+            TargetY = posY;
+            IdleWaitTime = IdleTime;
         }
 
     }

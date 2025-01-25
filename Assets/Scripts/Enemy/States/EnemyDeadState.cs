@@ -12,6 +12,7 @@ namespace TKM
         }
         public void Enter()
         {
+            Spawner.Instance.IncreaseKillCount();
             _enemyController.Dead();
         }
 

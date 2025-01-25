@@ -29,7 +29,6 @@ namespace TKM
         {
             if (other.gameObject.TryGetComponent<EnemyIdentifier>(out var enemy))
             {
-                Debug.Log("TRIGGER");
                 _enemies.Add(enemy);
             }
         }
@@ -37,11 +36,15 @@ namespace TKM
         public DetectorResult GetNearestEnemyOfType(EnemyType type, Vector2 position)
         {
             EnemyIdentifier selectedEnemy = null;
+            int index = -1;
+            int selectedIndex = -1;
             foreach (EnemyIdentifier enemy in _enemies)
             {
+                index++;
                 if (selectedEnemy == null && enemy.Type == type)
                 {
                     selectedEnemy = enemy;
+                    selectedIndex = index;
                     continue;
                 }
 
@@ -52,11 +55,16 @@ namespace TKM
                     if (newDistance < distance)
                     {
                         selectedEnemy = enemy;
+                        selectedIndex = index;
                     }
                 }
             }
             if (selectedEnemy == null)
             {
+                while (_enemies.Count > 0 && _enemies[0] == null)
+                {
+                    _enemies.RemoveAt(0);
+                }
                 if (_enemies.Count > 0)
                 {
                     return new DetectorResult(_enemies[0], true, _enemies[0].TeleportPoint.position);
@@ -66,6 +74,7 @@ namespace TKM
                     return new DetectorResult(null, true, position);
                 }
             }
+            _enemies.RemoveAt(selectedIndex);
             return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
         }
     }

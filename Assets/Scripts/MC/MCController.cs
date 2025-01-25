@@ -4,10 +4,16 @@ using UnityEngine.Events;
 
 namespace TKM
 {
+    public enum InputType
+    {
+        Keyboard,
+        Mouse
+    }
     public class MCController : StateMachine
     {
         [field: Header("Input Reader")]
         [field: SerializeField] public InputReader InputReader;
+        [field: SerializeField] public InputType InputType;
         #region Component
 
         [field: Header("Component")]
@@ -30,12 +36,9 @@ namespace TKM
 
         #region SharedData
         [field: Header("Shared Data (ReadOnly)")]
-
-        public bool IsNextInputEnabled { get; private set; } = true;
-        public Action OnAnimationFinished;
-        public Action EnableNextInput;
         public int LastInput;
         public float LastInputTime;
+        public bool IsNextInputEnabled { get; private set; } = true;
 
         #region Attack Info
         public string NextAttackAnimation;
@@ -44,7 +47,8 @@ namespace TKM
         public EnemyIdentifier NextEnemy;
         public bool IsAttackMiss;
         #endregion
-
+        public Action OnAnimationFinished;
+        public Action EnableNextInput;
         #endregion
 
         #region State
@@ -55,14 +59,14 @@ namespace TKM
 
         private void OnEnable()
         {
-            InputReader.LeftAttackPerformed += OnLeftAttackPerformed;
-            InputReader.RightAttackPerformed += OnRightAttackPerformed;
+            InputReader.LeftAttackPerformed[(int)InputType] += OnLeftAttackPerformed;
+            InputReader.RightAttackPerformed[(int)InputType] += OnRightAttackPerformed;
         }
 
         private void OnDisable()
         {
-            InputReader.LeftAttackPerformed -= OnLeftAttackPerformed;
-            InputReader.RightAttackPerformed -= OnRightAttackPerformed;
+            InputReader.LeftAttackPerformed[(int)InputType] -= OnLeftAttackPerformed;
+            InputReader.RightAttackPerformed[(int)InputType] -= OnRightAttackPerformed;
         }
         void Initialize()
         {
