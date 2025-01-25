@@ -191,11 +191,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputReader: {fileID: 11400000, guid: c391a0f65ad81864a836d1b8fc2686d9, type: 2}
+  InputType: 0
   LeftBound: {fileID: 0}
   RightBound: {fileID: 0}
   BufferInputTIme: 0.25
   Type: 0
-  MissWaitTime: 2
+  MissWaitTime: 1.25
   LastInput: 0
   LastInputTime: 0
   NextAttackAnimation: 

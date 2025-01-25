@@ -7,7 +7,9 @@ namespace TKM
     public enum EnemyType
     {
         White,
-        Black
+        Black,
+        PopThread,
+        Bomb,
     }
     public class DetectorResult
     {
@@ -30,6 +32,21 @@ namespace TKM
             if (other.gameObject.TryGetComponent<EnemyIdentifier>(out var enemy))
             {
                 _enemies.Add(enemy);
+            }
+        }
+
+        void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent<EnemyIdentifier>(out var enemy))
+            {
+                for (int i = 0; i < _enemies.Count; i++)
+                {
+                    if (_enemies[i].GetInstanceID() == enemy.GetInstanceID())
+                    {
+                        _enemies.RemoveAt(i);
+                        break;
+                    }
+                }
             }
         }
 
