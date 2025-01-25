@@ -23,7 +23,7 @@ namespace TKM
 
         void Update()
         {
-            if (fillBar != null && icon != null)
+            if (fillBar != null && icon != null && Spawner.Instance != null)
             {
                 fillBar.fillAmount = (float)Spawner.Instance.TotalKillCount / TotalAllKill;
                 // Get the width of the fill bar
