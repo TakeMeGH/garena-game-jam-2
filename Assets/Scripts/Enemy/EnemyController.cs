@@ -64,6 +64,7 @@ namespace TKM
 
         public void OnHitEnemy()
         {
+            ShakeController.Instance.ToggleShake();
             SwitchState(EnemyDeadState);
         }
 

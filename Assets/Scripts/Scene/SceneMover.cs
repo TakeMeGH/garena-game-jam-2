@@ -9,5 +9,12 @@ namespace TKM
         {
             SceneManager.LoadScene(nextScene);
         }
+
+        public void RetryCurrentScene()
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+
     }
 }

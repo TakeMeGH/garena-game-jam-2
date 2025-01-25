@@ -100,4 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521f70398960d3a4d958ea7382978f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onLoseConditions: {fileID: 11400000, guid: b2a17bece3c8f314eb54c077ff6a2f17, type: 2}
   Health: 3

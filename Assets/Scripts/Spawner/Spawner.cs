@@ -47,6 +47,8 @@ namespace TKM
         [SerializeField] PairRange PosXLeft;
         [SerializeField] PairRange PosXRight;
         [SerializeField] PairRange PosY;
+        [Header("Event")]
+        [SerializeField] VoidEvent _onWinConditions;
         int _killCount = 0;
         int _waveIndex = -1;
 
@@ -58,7 +60,11 @@ namespace TKM
         void StartNextWave()
         {
             _waveIndex++;
-            if (_waveIndex == _waves.Count) return;
+            if (_waveIndex == _waves.Count)
+            {
+                _onWinConditions.RaiseEvent();
+                return;
+            }
 
             _killCount = 0;
             StartCoroutine(ProceedWave());
@@ -84,7 +90,23 @@ namespace TKM
 
         void SpawnEnemy()
         {
-            int randomEnemyIndex = UnityEngine.Random.Range(0, _enemies.Count);
+            float totalValue = 0;
+            for (int i = 0; i < _enemies.Count; i++) totalValue += _enemies[i].Weight;
+
+            int randomEnemyIndex = 0;
+            float randomValue = UnityEngine.Random.Range(0.0001f, totalValue);
+            float valueBefore = 0f;
+            for (int i = 0; i < _enemies.Count; i++)
+            {
+                float nextValue = valueBefore + _enemies[i].Weight;
+                if (randomValue > valueBefore && randomValue <= nextValue)
+                {
+                    randomEnemyIndex = i;
+                    break;
+                }
+                valueBefore = nextValue;
+            }
+
             GameObject spawnedEnemy = Instantiate(_enemies[randomEnemyIndex].PrefabEnemy, _enemies[randomEnemyIndex].EnemyTransform.position, _enemies[randomEnemyIndex].EnemyTransform.rotation);
             Vector3 eulerAngles = spawnedEnemy.transform.eulerAngles;
 
@@ -105,7 +127,6 @@ namespace TKM
                 float randomValue = UnityEngine.Random.Range(0f, 1f);
                 if (randomValue <= _perks[i].Weight)
                 {
-                    Debug.Log(randomValue + " " + _perks[i].Weight);
                     Instantiate(_perks[i].PrefabEnemy, _perks[i].EnemyTransform.position, _perks[i].EnemyTransform.rotation);
                     if (i % 2 == 0) i++;
                 }

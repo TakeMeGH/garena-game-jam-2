@@ -13,7 +13,7 @@ namespace TKM
         }
         public void Enter()
         {
-            _enemyController.Animator.SetFloat("Speed", 0f);
+            _enemyController.Animator.Play("Idle");
         }
 
         public void Exit()
