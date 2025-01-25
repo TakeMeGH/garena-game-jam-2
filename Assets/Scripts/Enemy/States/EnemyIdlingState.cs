@@ -13,6 +13,12 @@ namespace TKM
         }
         public void Enter()
         {
+            if (_enemyController.GetComponent<EnemyIdentifier>().Type == EnemyType.Bomb)
+            {
+                _enemyController.Dead();
+                return;
+            }
+
             _enemyController.Animator.Play("Idle");
         }
 

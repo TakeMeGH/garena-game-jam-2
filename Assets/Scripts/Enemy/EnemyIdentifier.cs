@@ -10,13 +10,14 @@ namespace TKM
         public void OnHitEnemy()
         {
             if (this == null || gameObject == null) return;
-            if (gameObject.TryGetComponent<EnemyController>(out var enemyController))
-            {
-                enemyController.OnHitEnemy();
-            }
-            else if (gameObject.TryGetComponent<IPerks>(out var perks))
+
+            if (gameObject.TryGetComponent<IPerks>(out var perks))
             {
                 perks.Activate();
+            }
+            else if (gameObject.TryGetComponent<EnemyController>(out var enemyController))
+            {
+                enemyController.OnHitEnemy();
             }
         }
     }

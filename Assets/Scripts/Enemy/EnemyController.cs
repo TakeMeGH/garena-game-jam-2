@@ -24,7 +24,7 @@ namespace TKM
         [field: Header("Component")]
         public Rigidbody2D Rigidbody { get; private set; }
         public Animator Animator { get; private set; }
-        public SpriteRenderer SpriteRenderer { get; private set; }
+        // public SpriteRenderer SpriteRenderer { get; private set; }
         #endregion
 
         #region SharedData
@@ -44,7 +44,7 @@ namespace TKM
         {
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
-            SpriteRenderer = GetComponent<SpriteRenderer>();
+            // SpriteRenderer = GetComponent<SpriteRenderer>();
 
             EnemyIdlingState = new EnemyIdlingState(this);
             EnemyWalkingState = new EnemyWalkingState(this);

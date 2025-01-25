@@ -1688,9 +1688,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
-      propertyPath: PosY.Right
-      value: 7.5
+      propertyPath: _perks.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[2].Weight
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[3].Weight
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[2].PrefabEnemy
+      value: 
+      objectReference: {fileID: 8336724042675787438, guid: 85dbd0528d249204d93e7c2887575f53, type: 3}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[3].PrefabEnemy
+      value: 
+      objectReference: {fileID: 8336724042675787438, guid: 85dbd0528d249204d93e7c2887575f53, type: 3}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[2].EnemyTransform
+      value: 
+      objectReference: {fileID: 159537254521979626}
+    - target: {fileID: 4970856655635991744, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+      propertyPath: _perks.Array.data[3].EnemyTransform
+      value: 
+      objectReference: {fileID: 159537254521979625}
     - target: {fileID: 6133759048307939035, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -1700,6 +1724,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+--- !u!4 &159537254521979625 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6970300455898877359, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+  m_PrefabInstance: {fileID: 159537254521979624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &159537254521979626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 276814323702712927, guid: bbecd61451d525a46b8dde16983f090d, type: 3}
+  m_PrefabInstance: {fileID: 159537254521979624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &977892480339091023
 PrefabInstance:
   m_ObjectHideFlags: 0

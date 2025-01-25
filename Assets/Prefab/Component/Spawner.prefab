@@ -162,7 +162,7 @@ MonoBehaviour:
     Right: 4.9
   PosY:
     Left: 6
-    Right: 13
+    Right: 7.5
   _onWinConditions: {fileID: 11400000, guid: a6573dcfb9816354c90ef8cc2f448171, type: 2}
 --- !u!1 &7027885973781466611
 GameObject:
