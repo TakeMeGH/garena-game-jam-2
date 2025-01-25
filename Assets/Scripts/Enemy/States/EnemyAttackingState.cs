@@ -12,6 +12,10 @@ namespace TKM
         }
         public void Enter()
         {
+            if (_enemyController.IsFlying)
+            {
+                AudioManager.Instance.PlaySFX(SFX.FlyingEnemy_atk);
+            }
             _enemyController.Animator.Play("Attack");
 
             _enemyController.OnAnimationFinished += OnAnimationFinished;

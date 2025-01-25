@@ -6,6 +6,7 @@ namespace TKM
     public class MCAttackState : MCBaseState
     {
         bool _isInputEnable = false;
+        int _attackCall = 0;
         public MCAttackState(MCController _MCController) : base(_MCController)
         {
         }
@@ -29,6 +30,8 @@ namespace TKM
 
             _MCController.OnAnimationFinished += OnAnimationFinished;
             _MCController.EnableNextInput += OnEnableNextInput;
+
+            PlaySound();
         }
 
         public override void Update()
@@ -69,6 +72,30 @@ namespace TKM
                 _MCController.NextEnemy.OnHitEnemy();
             }
             _isInputEnable = true;
+        }
+
+        void PlaySound()
+        {
+            if (_MCController.InputType == InputType.Keyboard)
+            {
+                AudioManager.Instance.PlaySFX(SFX.PlayerB_atk1);
+            }
+            else
+            {
+                switch (_attackCall % 3)
+                {
+                    case 0:
+                        AudioManager.Instance.PlaySFX(SFX.PlayerA_atk1);
+                        break;
+                    case 1:
+                        AudioManager.Instance.PlaySFX(SFX.PlayerA_atk2);
+                        break;
+                    case 2:
+                        AudioManager.Instance.PlaySFX(SFX.PlayerA_atk3);
+                        break;
+                }
+                _attackCall++;
+            }
         }
     }
 }

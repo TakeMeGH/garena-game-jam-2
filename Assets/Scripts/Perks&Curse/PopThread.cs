@@ -13,6 +13,7 @@ namespace TKM
         }
         public void Activate()
         {
+            AudioManager.Instance.PlaySFX(SFX.PopThread);
             EnemyController[] enemyControllers = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
             foreach (EnemyController enemyController in enemyControllers)
             {

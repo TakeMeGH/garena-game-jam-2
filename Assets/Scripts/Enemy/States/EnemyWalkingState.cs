@@ -34,6 +34,8 @@ namespace TKM
             else
             {
                 _enemyController.Animator.Play("Glide");
+                AudioManager.Instance.PlaySFX(SFX.FlyingEnemy_glide);
+
                 _defaultPostion = _enemyController.transform.position;
             }
         }

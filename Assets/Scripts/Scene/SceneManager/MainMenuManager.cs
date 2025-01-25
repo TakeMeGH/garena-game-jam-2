@@ -12,6 +12,7 @@ namespace TKM
 
         void Start()
         {
+            AudioManager.Instance.PlayBGM(BGM.MainMenu);
             _inputReader.EnableUIInput();
         }
 

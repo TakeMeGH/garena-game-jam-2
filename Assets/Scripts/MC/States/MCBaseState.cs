@@ -49,7 +49,6 @@ namespace TKM
                 // Calculate the interpolated blur value
                 _currentBlurAmount = Mathf.Lerp(_initialBlurAmount, _targetBlurAmount, _elapsedTime / _duration);
 
-                Debug.Log(_currentBlurAmount + " DEBUG");
                 // Apply the interpolated value to the material
                 blurMaterial.SetFloat(blurProperty, _currentBlurAmount);
 

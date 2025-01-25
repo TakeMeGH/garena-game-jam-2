@@ -75,6 +75,7 @@ namespace TKM
 
         private void OnWinConditions()
         {
+            AudioManager.Instance.PlayBGM(BGM.WinCond);
             _winMenu.alpha = 1;
             _winMenu.blocksRaycasts = true;
             _winMenu.interactable = true;
@@ -84,6 +85,7 @@ namespace TKM
 
         private void OnLoseConditions()
         {
+            AudioManager.Instance.PlayBGM(BGM.LoseCond);
             _loseMenu.alpha = 1;
             _loseMenu.blocksRaycasts = true;
             _loseMenu.interactable = true;

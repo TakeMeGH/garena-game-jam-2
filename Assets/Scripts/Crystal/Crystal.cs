@@ -32,6 +32,7 @@ namespace TKM
             if (_lastAttackTime > INVULNERABLE_TIME)
             {
                 Health--;
+                AudioManager.Instance.PlaySFX(SFX.Base_attacked);
                 if (Health <= 0)
                 {
                     _onLoseConditions.RaiseEvent();
