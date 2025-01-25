@@ -368,6 +368,8 @@ GameObject:
   - component: {fileID: 8497928928859753936}
   - component: {fileID: 4083573965604733009}
   - component: {fileID: 5882575493363487191}
+  - component: {fileID: 5919329238118993803}
+  - component: {fileID: 5078427615475978198}
   m_Layer: 5
   m_Name: WinConPanel
   m_TagString: Untagged
@@ -448,6 +450,91 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &5919329238118993803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045817190911006110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1e75fc2ae1034eba9f6012ace0d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: c391a0f65ad81864a836d1b8fc2686d9, type: 2}
+  MouseA:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5078427615475978198}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+  MouseB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5078427615475978198}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  KeyboardA:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5078427615475978198}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+  KeyboardB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5078427615475978198}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5078427615475978198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045817190911006110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b62a12c4945ef4a998fe5223bc7af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1203313406631553189
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +893,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press A or Left Click
 
-    to Quit'
+    to Main Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3115,7 +3202,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press A or Left Click
 
-    to Quit'
+    to Main Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3253,7 +3340,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press D or Right Click
 
-    to Main Menu'
+    to Retry'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4331,6 +4418,8 @@ GameObject:
   - component: {fileID: 4906045546014352612}
   - component: {fileID: 8434943620401611565}
   - component: {fileID: 4085004256713015244}
+  - component: {fileID: 1859222539398668846}
+  - component: {fileID: 131899949537680938}
   m_Layer: 5
   m_Name: LoseConPanel
   m_TagString: Untagged
@@ -4411,6 +4500,91 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &1859222539398668846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572741720207415143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f1e75fc2ae1034eba9f6012ace0d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: c391a0f65ad81864a836d1b8fc2686d9, type: 2}
+  MouseA:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 131899949537680938}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+  MouseB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 131899949537680938}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: RetryCurrentScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  KeyboardA:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 131899949537680938}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+  KeyboardB:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 131899949537680938}
+        m_TargetAssemblyTypeName: TKM.SceneMover, Assembly-CSharp
+        m_MethodName: RetryCurrentScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &131899949537680938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7572741720207415143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b62a12c4945ef4a998fe5223bc7af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7592585866737556403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,7 +5421,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Press D or Right Click
 
-    to Main Menu'
+    to Next Level'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
