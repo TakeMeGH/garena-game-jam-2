@@ -9,12 +9,23 @@ namespace TKM
         PlayerA_atk1,
         PlayerA_atk2,
         PlayerA_atk3,
-        PlayerB_atk1
+        PlayerB_atk1,
+        Base_attacked,
+        PopThread,
+        FlyingEnemy_atk,
+        FlyingEnemy_glide,
+        button_click,
+
     }
 
     public enum BGM
     {
-        ChatPopUp
+        MainMenu,
+        LoseCond,
+        WinCond,
+        Level_1,
+        Level_2,
+        Level_3
     }
 
     public class AudioManager : Singleton<AudioManager>
@@ -31,10 +42,20 @@ namespace TKM
         [SerializeField] AudioSource PlayerA_atk2;
         [SerializeField] AudioSource PlayerA_atk3;
         [SerializeField] AudioSource PlayerB_atk1;
+        [SerializeField] AudioSource Base_attacked;
+        [SerializeField] AudioSource PopThread;
+        [SerializeField] AudioSource FlyingEnemy_atk;
+        [SerializeField] AudioSource FlyingEnemy_glide;
+        [SerializeField] AudioSource Button_click;
         #endregion
 
         #region BGM
-        // Add your BGM AudioSources if needed
+        [SerializeField] AudioSource MainMenu;
+        [SerializeField] AudioSource LoseCond;
+        [SerializeField] AudioSource WinCond;
+        [SerializeField] AudioSource Level_1;
+        [SerializeField] AudioSource Level_2;
+        [SerializeField] AudioSource Level_3;
         #endregion
 
         void Start()
@@ -78,10 +99,64 @@ namespace TKM
                 case SFX.PlayerB_atk1:
                     PlayerB_atk1.Play();
                     break;
+                case SFX.Base_attacked:
+                    Base_attacked.Play();
+                    break;
+                case SFX.PopThread:
+                    PopThread.Play();
+                    break;
+                case SFX.FlyingEnemy_atk:
+                    FlyingEnemy_atk.Play();
+                    break;
+                case SFX.FlyingEnemy_glide:
+                    FlyingEnemy_glide.Play();
+                    break;
+                case SFX.button_click:
+                    Button_click.Play();
+                    break;
                 default:
                     Debug.LogWarning("Unknown SFX type");
                     break;
             }
+        }
+
+        public void PlayBGM(BGM bgmType)
+        {
+            StopAllBGM();
+
+            switch (bgmType)
+            {
+                case BGM.MainMenu:
+                    MainMenu.Play();
+                    break;
+                case BGM.LoseCond:
+                    LoseCond.Play();
+                    break;
+                case BGM.WinCond:
+                    WinCond.Play();
+                    break;
+                case BGM.Level_1:
+                    Level_1.Play();
+                    break;
+                case BGM.Level_2:
+                    Level_2.Play();
+                    break;
+                case BGM.Level_3:
+                    Level_3.Play();
+                    break;
+                default:
+                    Debug.LogWarning("Unknown BGM type");
+                    break;
+            }
+        }
+        private void StopAllBGM()
+        {
+            MainMenu.Stop();
+            LoseCond.Stop();
+            WinCond.Stop();
+            Level_1.Stop();
+            Level_2.Stop();
+            Level_3.Stop();
         }
 
         void Update()
