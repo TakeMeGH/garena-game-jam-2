@@ -64,6 +64,15 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""PauseMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b72b746-d903-4ba4-b8f3-59c4a723de14"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""LeftAttack"",
                     ""type"": ""Button"",
                     ""id"": ""f5670a2e-4582-4462-bf33-f8b73b25276d"",
@@ -232,6 +241,17 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""action"": ""RightAttackMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""343ba23c-cb82-405a-8b33-ff12c20f3e73"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -243,6 +263,42 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""name"": ""UnPause"",
                     ""type"": ""Button"",
                     ""id"": ""ded79c4a-1a4c-4a1f-ba4f-39899ed8e7df"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyboardA"",
+                    ""type"": ""Button"",
+                    ""id"": ""868596a8-562d-45c7-8aa9-b03eb3fc6f0e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyboardB"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f0a2cf5-4da5-4339-9244-66ec5b7cbbbc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseA"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe5d4645-a416-4e6c-811c-43a010292e90"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseB"",
+                    ""type"": ""Button"",
+                    ""id"": ""b864548b-a73c-455e-9f22-e1eed7f2b24a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -260,6 +316,50 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
                     ""action"": ""UnPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efa73bf3-dbb4-4ecc-8d3f-799d7481b9e8"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4f2d903-9f0c-4951-9f14-4ba5cb19f65d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f762a1d-b716-4821-b527-0ad66778a195"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a56e57b3-48d0-4682-ac69-1e81f133bbb9"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -272,6 +372,7 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
+        m_Gameplay_PauseMouse = m_Gameplay.FindAction("PauseMouse", throwIfNotFound: true);
         m_Gameplay_LeftAttack = m_Gameplay.FindAction("LeftAttack", throwIfNotFound: true);
         m_Gameplay_RightAttack = m_Gameplay.FindAction("RightAttack", throwIfNotFound: true);
         m_Gameplay_LeftAttackMouse = m_Gameplay.FindAction("LeftAttackMouse", throwIfNotFound: true);
@@ -279,6 +380,10 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_UnPause = m_UI.FindAction("UnPause", throwIfNotFound: true);
+        m_UI_KeyboardA = m_UI.FindAction("KeyboardA", throwIfNotFound: true);
+        m_UI_KeyboardB = m_UI.FindAction("KeyboardB", throwIfNotFound: true);
+        m_UI_MouseA = m_UI.FindAction("MouseA", throwIfNotFound: true);
+        m_UI_MouseB = m_UI.FindAction("MouseB", throwIfNotFound: true);
     }
 
     ~@MCInput()
@@ -350,6 +455,7 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Pause;
+    private readonly InputAction m_Gameplay_PauseMouse;
     private readonly InputAction m_Gameplay_LeftAttack;
     private readonly InputAction m_Gameplay_RightAttack;
     private readonly InputAction m_Gameplay_LeftAttackMouse;
@@ -362,6 +468,7 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
+        public InputAction @PauseMouse => m_Wrapper.m_Gameplay_PauseMouse;
         public InputAction @LeftAttack => m_Wrapper.m_Gameplay_LeftAttack;
         public InputAction @RightAttack => m_Wrapper.m_Gameplay_RightAttack;
         public InputAction @LeftAttackMouse => m_Wrapper.m_Gameplay_LeftAttackMouse;
@@ -387,6 +494,9 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @PauseMouse.started += instance.OnPauseMouse;
+            @PauseMouse.performed += instance.OnPauseMouse;
+            @PauseMouse.canceled += instance.OnPauseMouse;
             @LeftAttack.started += instance.OnLeftAttack;
             @LeftAttack.performed += instance.OnLeftAttack;
             @LeftAttack.canceled += instance.OnLeftAttack;
@@ -415,6 +525,9 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @PauseMouse.started -= instance.OnPauseMouse;
+            @PauseMouse.performed -= instance.OnPauseMouse;
+            @PauseMouse.canceled -= instance.OnPauseMouse;
             @LeftAttack.started -= instance.OnLeftAttack;
             @LeftAttack.performed -= instance.OnLeftAttack;
             @LeftAttack.canceled -= instance.OnLeftAttack;
@@ -449,11 +562,19 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_UnPause;
+    private readonly InputAction m_UI_KeyboardA;
+    private readonly InputAction m_UI_KeyboardB;
+    private readonly InputAction m_UI_MouseA;
+    private readonly InputAction m_UI_MouseB;
     public struct UIActions
     {
         private @MCInput m_Wrapper;
         public UIActions(@MCInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @UnPause => m_Wrapper.m_UI_UnPause;
+        public InputAction @KeyboardA => m_Wrapper.m_UI_KeyboardA;
+        public InputAction @KeyboardB => m_Wrapper.m_UI_KeyboardB;
+        public InputAction @MouseA => m_Wrapper.m_UI_MouseA;
+        public InputAction @MouseB => m_Wrapper.m_UI_MouseB;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -466,6 +587,18 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @UnPause.started += instance.OnUnPause;
             @UnPause.performed += instance.OnUnPause;
             @UnPause.canceled += instance.OnUnPause;
+            @KeyboardA.started += instance.OnKeyboardA;
+            @KeyboardA.performed += instance.OnKeyboardA;
+            @KeyboardA.canceled += instance.OnKeyboardA;
+            @KeyboardB.started += instance.OnKeyboardB;
+            @KeyboardB.performed += instance.OnKeyboardB;
+            @KeyboardB.canceled += instance.OnKeyboardB;
+            @MouseA.started += instance.OnMouseA;
+            @MouseA.performed += instance.OnMouseA;
+            @MouseA.canceled += instance.OnMouseA;
+            @MouseB.started += instance.OnMouseB;
+            @MouseB.performed += instance.OnMouseB;
+            @MouseB.canceled += instance.OnMouseB;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -473,6 +606,18 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
             @UnPause.started -= instance.OnUnPause;
             @UnPause.performed -= instance.OnUnPause;
             @UnPause.canceled -= instance.OnUnPause;
+            @KeyboardA.started -= instance.OnKeyboardA;
+            @KeyboardA.performed -= instance.OnKeyboardA;
+            @KeyboardA.canceled -= instance.OnKeyboardA;
+            @KeyboardB.started -= instance.OnKeyboardB;
+            @KeyboardB.performed -= instance.OnKeyboardB;
+            @KeyboardB.canceled -= instance.OnKeyboardB;
+            @MouseA.started -= instance.OnMouseA;
+            @MouseA.performed -= instance.OnMouseA;
+            @MouseA.canceled -= instance.OnMouseA;
+            @MouseB.started -= instance.OnMouseB;
+            @MouseB.performed -= instance.OnMouseB;
+            @MouseB.canceled -= instance.OnMouseB;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -496,6 +641,7 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnPauseMouse(InputAction.CallbackContext context);
         void OnLeftAttack(InputAction.CallbackContext context);
         void OnRightAttack(InputAction.CallbackContext context);
         void OnLeftAttackMouse(InputAction.CallbackContext context);
@@ -504,5 +650,9 @@ public partial class @MCInput: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnUnPause(InputAction.CallbackContext context);
+        void OnKeyboardA(InputAction.CallbackContext context);
+        void OnKeyboardB(InputAction.CallbackContext context);
+        void OnMouseA(InputAction.CallbackContext context);
+        void OnMouseB(InputAction.CallbackContext context);
     }
 }
