@@ -5,15 +5,22 @@ namespace TKM
 {
     public class InGameUIController : MonoBehaviour
     {
-        [SerializeField] InputReader _inputReader; 
+        [SerializeField] InputReader _inputReader;
         [Header("Pause Menu")]
         [SerializeField] CanvasGroup _pauseMenu;
         [SerializeField] CanvasGroup _pauseMouseMenu;
+        [SerializeField] CanvasGroup _loseMenu;
+        [SerializeField] CanvasGroup _winMenu;
+        [Header("Event")]
+        [SerializeField] VoidEvent _onLoseConditions;
+        [SerializeField] VoidEvent _onWinConditions;
 
         void OnEnable()
         {
             _inputReader.PausePerformed += OnPause;
             _inputReader.PauseMousePerformed += OnPauseMouse;
+            _onLoseConditions.EventAction += OnLoseConditions;
+            _onWinConditions.EventAction += OnWinConditions;
         }
 
 
@@ -21,6 +28,9 @@ namespace TKM
         {
             _inputReader.PausePerformed -= OnPause;
             _inputReader.PauseMousePerformed -= OnPauseMouse;
+            _onLoseConditions.EventAction -= OnLoseConditions;
+            _onWinConditions.EventAction -= OnWinConditions;
+
 
         }
 
@@ -62,6 +72,25 @@ namespace TKM
             _pauseMouseMenu.blocksRaycasts = false;
             _pauseMouseMenu.interactable = false;
         }
+
+        private void OnWinConditions()
+        {
+            _winMenu.alpha = 1;
+            _winMenu.blocksRaycasts = true;
+            _winMenu.interactable = true;
+
+            _inputReader.EnableUIInput();
+        }
+
+        private void OnLoseConditions()
+        {
+            _loseMenu.alpha = 1;
+            _loseMenu.blocksRaycasts = true;
+            _loseMenu.interactable = true;
+
+            _inputReader.EnableUIInput();
+        }
+
 
     }
 }

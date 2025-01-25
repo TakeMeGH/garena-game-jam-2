@@ -5959,3 +5959,7 @@ MonoBehaviour:
   _inputReader: {fileID: 11400000, guid: c391a0f65ad81864a836d1b8fc2686d9, type: 2}
   _pauseMenu: {fileID: 3390038878313028285}
   _pauseMouseMenu: {fileID: 8756036341189933129}
+  _loseMenu: {fileID: 4085004256713015244}
+  _winMenu: {fileID: 5882575493363487191}
+  _onLoseConditions: {fileID: 11400000, guid: b2a17bece3c8f314eb54c077ff6a2f17, type: 2}
+  _onWinConditions: {fileID: 11400000, guid: a6573dcfb9816354c90ef8cc2f448171, type: 2}

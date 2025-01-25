@@ -47,6 +47,8 @@ namespace TKM
         [SerializeField] PairRange PosXLeft;
         [SerializeField] PairRange PosXRight;
         [SerializeField] PairRange PosY;
+        [Header("Event")]
+        [SerializeField] VoidEvent _onWinConditions;
         int _killCount = 0;
         int _waveIndex = -1;
 
@@ -58,7 +60,11 @@ namespace TKM
         void StartNextWave()
         {
             _waveIndex++;
-            if (_waveIndex == _waves.Count) return;
+            if (_waveIndex == _waves.Count)
+            {
+                _onWinConditions.RaiseEvent();
+                return;
+            }
 
             _killCount = 0;
             StartCoroutine(ProceedWave());
@@ -100,7 +106,7 @@ namespace TKM
                 }
                 valueBefore = nextValue;
             }
-            
+
             GameObject spawnedEnemy = Instantiate(_enemies[randomEnemyIndex].PrefabEnemy, _enemies[randomEnemyIndex].EnemyTransform.position, _enemies[randomEnemyIndex].EnemyTransform.rotation);
             Vector3 eulerAngles = spawnedEnemy.transform.eulerAngles;
 

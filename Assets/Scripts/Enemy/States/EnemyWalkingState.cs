@@ -24,7 +24,7 @@ namespace TKM
         {
             if (_enemyController.IsFlying == false)
             {
-                _enemyController.Animator.SetFloat("Speed", _enemyController.Speed);
+                _enemyController.Animator.Play("Walk");
                 _speedWithDirection = _enemyController.Speed;
                 if (CalculateDistance() < 0)
                 {
