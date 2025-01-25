@@ -1524,11 +1524,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1168319613442720080, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.95
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 1168319613442720080, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.33
+      value: 10.47
       objectReference: {fileID: 0}
     - target: {fileID: 1168319613442720080, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1562,21 +1562,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2559874737995698087, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8376248467317085175, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
       propertyPath: m_Name
       value: PopThread
-      objectReference: {fileID: 0}
-    - target: {fileID: 8616865100881466875, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8616865100881466875, guid: aa88918d91621fe4498ad3a3859a98bd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.61
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

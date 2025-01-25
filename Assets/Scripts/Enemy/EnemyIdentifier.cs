@@ -13,6 +13,10 @@ namespace TKM
             {
                 enemyController.OnHitEnemy();
             }
+            else if (gameObject.TryGetComponent<IPerks>(out var perks))
+            {
+                perks.Activate();
+            }
         }
     }
 }

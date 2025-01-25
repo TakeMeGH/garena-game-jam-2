@@ -52,6 +52,55 @@ namespace TKM
 
         public DetectorResult GetNearestEnemyOfType(EnemyType type, Vector2 position)
         {
+            EnemyIdentifier selectedEnemy = SelectObjectOfType(type, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType(EnemyType.PopThread, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType(EnemyType.Bomb, position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            }
+
+            selectedEnemy = SelectObjectOfType((EnemyType)(1 - (int)type), position);
+
+            if (selectedEnemy != null)
+            {
+                return new DetectorResult(selectedEnemy, true, selectedEnemy.TeleportPoint.position);
+            }
+            return new DetectorResult(null, true, position);
+
+            // if (selectedEnemy == null)
+            // {
+            //     while (_enemies.Count > 0 && _enemies[0] == null)
+            //     {
+            //         _enemies.RemoveAt(0);
+            //     }
+            //     if (_enemies.Count > 0)
+            //     {
+            //         return new DetectorResult(_enemies[0], true, _enemies[0].TeleportPoint.position);
+            //     }
+            //     else
+            //     {
+            //         return new DetectorResult(null, true, position);
+            //     }
+            // }
+            // return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+        }
+
+        EnemyIdentifier SelectObjectOfType(EnemyType type, Vector2 position)
+        {
             EnemyIdentifier selectedEnemy = null;
             int index = -1;
             int selectedIndex = -1;
@@ -76,23 +125,8 @@ namespace TKM
                     }
                 }
             }
-            if (selectedEnemy == null)
-            {
-                while (_enemies.Count > 0 && _enemies[0] == null)
-                {
-                    _enemies.RemoveAt(0);
-                }
-                if (_enemies.Count > 0)
-                {
-                    return new DetectorResult(_enemies[0], true, _enemies[0].TeleportPoint.position);
-                }
-                else
-                {
-                    return new DetectorResult(null, true, position);
-                }
-            }
-            _enemies.RemoveAt(selectedIndex);
-            return new DetectorResult(selectedEnemy, false, selectedEnemy.TeleportPoint.position);
+            if (selectedIndex != -1) _enemies.RemoveAt(selectedIndex);
+            return selectedEnemy;
         }
     }
 }

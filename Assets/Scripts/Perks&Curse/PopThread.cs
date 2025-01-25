@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TKM
 {
-    public class PopThread : MonoBehaviour
+    public class PopThread : MonoBehaviour, IPerks
     {
         private void Update()
         {
@@ -21,6 +21,7 @@ namespace TKM
                     enemyController.OnHitEnemy();
                 }
             }
+            Destroy(gameObject);
         }
     }
 }
