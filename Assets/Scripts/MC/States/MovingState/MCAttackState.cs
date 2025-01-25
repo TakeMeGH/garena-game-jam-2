@@ -35,7 +35,7 @@ namespace TKM
         {
             base.Update();
 
-            if (_isInputEnable)
+            if (_isInputEnable && _MCController.IsAttackMiss == false)
             {
                 ProceedInput();
             }
@@ -52,11 +52,22 @@ namespace TKM
 
         public void OnAnimationFinished()
         {
-            _MCController.SwitchState(_MCController.MCIdlingState);
+            if (_MCController.IsAttackMiss)
+            {
+                _MCController.SwitchState(_MCController.MCMissState);
+            }
+            else
+            {
+                _MCController.SwitchState(_MCController.MCIdlingState);
+            }
         }
 
         public void OnEnableNextInput()
         {
+            if (_MCController.IsAttackMiss == false)
+            {
+                _MCController.NextEnemy.OnHitEnemy();
+            }
             _isInputEnable = true;
         }
     }
