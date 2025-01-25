@@ -89,12 +89,12 @@ namespace TKM
 
         public void TriggerEnableNextInput()
         {
-            EnableNextInput.Invoke();
+            EnableNextInput?.Invoke();
         }
 
         public void TriggerAnimationFinished()
         {
-            OnAnimationFinished.Invoke();
+            OnAnimationFinished?.Invoke();
         }
 
         public void ResetInput()
