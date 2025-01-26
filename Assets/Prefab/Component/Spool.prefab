@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: 0}
   _loseHealthIcons: {fileID: 21300000, guid: cc68cda46f8b08e48b3bb6c24593a861, type: 3}
   _spoleStateImages:
-  - {fileID: 21300000, guid: 0284b01c433eb4f4db54120cec2122de, type: 3}
+  - {fileID: 21300000, guid: d1a144b7da2624a45b114fb0d634c43d, type: 3}
   - {fileID: 21300000, guid: f6b2e61f58238ec45b70ca9024421ca4, type: 3}
   _spoleRenderer: {fileID: 7574377735000124762}
   Health: 3
