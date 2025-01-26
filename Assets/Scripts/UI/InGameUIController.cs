@@ -6,16 +6,20 @@ namespace TKM
     public class InGameUIController : MonoBehaviour
     {
         [SerializeField] InputReader _inputReader;
-        [Header("Pause Menu")]
+        [Header("Menu")]
         [SerializeField] CanvasGroup _pauseMenu;
         [SerializeField] CanvasGroup _pauseMouseMenu;
         [SerializeField] CanvasGroup _loseMenu;
         [SerializeField] CanvasGroup _winMenu;
         [SerializeField] CanvasGroup _overlay;
+        [SerializeField] CanvasGroup[] _tutorialMenu;
+        CanvasGroup _selectedTutorial;
 
         [Header("Event")]
         [SerializeField] VoidEvent _onLoseConditions;
         [SerializeField] VoidEvent _onWinConditions;
+        [SerializeField] IntEvent _triggerTutorial;
+
 
         void OnEnable()
         {
@@ -23,8 +27,8 @@ namespace TKM
             _inputReader.PauseMousePerformed += OnPauseMouse;
             _onLoseConditions.EventAction += OnLoseConditions;
             _onWinConditions.EventAction += OnWinConditions;
+            _triggerTutorial.EventAction += OnTriggerTutorial;
         }
-
 
         void OnDisable()
         {
@@ -32,8 +36,7 @@ namespace TKM
             _inputReader.PauseMousePerformed -= OnPauseMouse;
             _onLoseConditions.EventAction -= OnLoseConditions;
             _onWinConditions.EventAction -= OnWinConditions;
-
-
+            _triggerTutorial.EventAction -= OnTriggerTutorial;
         }
 
         private void OnPause()
@@ -100,6 +103,33 @@ namespace TKM
 
             _inputReader.EnableUIInput();
         }
+
+        void OnTriggerTutorial(int index)
+        {
+            _overlay.alpha = 0f;
+
+            _selectedTutorial = _tutorialMenu[index];
+            _selectedTutorial.alpha = 1;
+            _selectedTutorial.blocksRaycasts = true;
+            _selectedTutorial.interactable = true;
+
+            _inputReader.EnableUIInput();
+            Time.timeScale = 0f;
+        }
+
+        public void OnCloseTutorial()
+        {
+            Time.timeScale = 1f;
+            _inputReader.EnableGameplayInput();
+
+            _selectedTutorial.alpha = 0;
+            _selectedTutorial.blocksRaycasts = false;
+            _selectedTutorial.interactable = false;
+
+            _overlay.alpha = 1f;
+
+        }
+
 
 
     }

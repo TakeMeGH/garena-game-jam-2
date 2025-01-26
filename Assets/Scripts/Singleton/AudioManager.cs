@@ -65,17 +65,22 @@ namespace TKM
 
         void LoadMixer()
         {
+            Debug.Log(PlayerPrefs.HasKey(MASTER_VOLUME) + " DEBUG");
             if (!PlayerPrefs.HasKey(MASTER_VOLUME)) return;
 
+            // HotFix
             float volume = PlayerPrefs.GetFloat(MASTER_VOLUME);
+            volume = 1;
             _mixer.SetFloat(MASTER_VOLUME, Mathf.Log10(volume) * MULTIPILER);
             PlayerPrefs.SetFloat(MASTER_VOLUME, volume);
 
             volume = PlayerPrefs.GetFloat(SFX_VOLUME);
+            volume = 1;
             _mixer.SetFloat(SFX_VOLUME, Mathf.Log10(volume) * MULTIPILER);
             PlayerPrefs.SetFloat(SFX_VOLUME, volume);
 
             volume = PlayerPrefs.GetFloat(BGM_VOLUME);
+            volume = 1;
             _mixer.SetFloat(BGM_VOLUME, Mathf.Log10(volume) * MULTIPILER);
             PlayerPrefs.SetFloat(BGM_VOLUME, volume);
         }
