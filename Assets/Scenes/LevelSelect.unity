@@ -493,6 +493,10 @@ PrefabInstance:
       value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -709,6 +713,10 @@ PrefabInstance:
       value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -807,7 +815,7 @@ PrefabInstance:
     - target: {fileID: 4940710917995523479, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9015363109679577200, guid: be66553617f297f4991e18c0bde1aaa0, type: 3}
+      objectReference: {fileID: 568236957295174715, guid: c1451385d01724c4283610b6f2163981, type: 3}
     - target: {fileID: 4940710917995523479, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -863,6 +871,10 @@ PrefabInstance:
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
@@ -951,6 +963,10 @@ PrefabInstance:
     - target: {fileID: 8194826986600459076, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_PressedColor.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194826986600459076, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
+      propertyPath: m_Colors.m_ColorMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8194826986600459076, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.a
