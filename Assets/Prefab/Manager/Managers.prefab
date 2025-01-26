@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eece5a5ff101454418409a7ed600c50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsTutorialShowedUp: 0000
   TriggerTutorial: {fileID: 11400000, guid: 631cc84850a3c8646b9c971082dea45d, type: 2}
+  InputReader: {fileID: 11400000, guid: c391a0f65ad81864a836d1b8fc2686d9, type: 2}
 --- !u!1 &1241362777942128612
 GameObject:
   m_ObjectHideFlags: 0

@@ -937,10 +937,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue System
       objectReference: {fileID: 0}
-    - target: {fileID: 2753718018764665327, guid: de0e66297b157244bbc555f09cb344a7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3183266951831634833, guid: de0e66297b157244bbc555f09cb344a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -983,11 +979,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434935992803, guid: de0e66297b157244bbc555f09cb344a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7778558434935992803, guid: de0e66297b157244bbc555f09cb344a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
