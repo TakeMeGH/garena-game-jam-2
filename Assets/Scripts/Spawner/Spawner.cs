@@ -92,6 +92,8 @@ namespace TKM
 
         void SpawnEnemy()
         {
+            TutorialManager.Instance.ShowTutorial(TutorialType.BasicGameKnowledge);
+
             float totalValue = 0;
             for (int i = 0; i < _enemies.Count; i++) totalValue += _enemies[i].Weight;
 
@@ -129,6 +131,9 @@ namespace TKM
                 float randomValue = UnityEngine.Random.Range(0f, 1f);
                 if (randomValue <= _perks[i].Weight)
                 {
+                    if (i <= 1) TutorialManager.Instance.ShowTutorial(TutorialType.Perks);
+                    else TutorialManager.Instance.ShowTutorial(TutorialType.Bombs);
+
                     Instantiate(_perks[i].PrefabEnemy, _perks[i].EnemyTransform.position, _perks[i].EnemyTransform.rotation);
                     if (i % 2 == 0) i++;
                 }

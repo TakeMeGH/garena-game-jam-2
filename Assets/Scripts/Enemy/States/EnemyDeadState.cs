@@ -12,7 +12,11 @@ namespace TKM
         }
         public void Enter()
         {
-            Spawner.Instance.IncreaseKillCount();
+            if (_enemyController.GetComponent<EnemyIdentifier>().Type != EnemyType.Bomb)
+            {
+                Spawner.Instance.IncreaseKillCount();
+            }
+            VFXSpawner.Instance.PlayDeadVFX(_enemyController.transform.position);
             _enemyController.Dead();
         }
 

@@ -39,6 +39,7 @@ namespace TKM
         {
             if (_lastAttackTime > INVULNERABLE_TIME)
             {
+                TutorialManager.Instance.ShowTutorial(TutorialType.AttackedSpool);
                 Health--;
                 AudioManager.Instance.PlaySFX(SFX.Base_attacked);
                 if (Health <= 0)
