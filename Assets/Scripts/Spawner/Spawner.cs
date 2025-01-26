@@ -149,5 +149,14 @@ namespace TKM
             }
             return total;
         }
+
+        public bool IsLastWave()
+        {
+            if (_waveIndex >= _waves.Count)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

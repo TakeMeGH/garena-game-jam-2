@@ -33,6 +33,7 @@ namespace TKM
         }
         public void ShowTutorial(TutorialType type)
         {
+            if (type == TutorialType.AttackedSpool && Spawner.Instance.IsLastWave()) return;
             if (IsTutorialShowedUp[(int)type]) return;
 
             IsTutorialShowedUp[(int)type] = true;
