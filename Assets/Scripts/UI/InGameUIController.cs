@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace TKM
@@ -81,9 +82,16 @@ namespace TKM
             _pauseMouseMenu.interactable = false;
             _overlay.alpha = 1f;
         }
-
         private void OnWinConditions()
         {
+            StartCoroutine(HandleWinWithDelay());
+        }
+
+        IEnumerator HandleWinWithDelay()
+        {
+            float delayTime = 2f;
+            yield return new WaitForSecondsRealtime(delayTime);
+
             _overlay.alpha = 0f;
             AudioManager.Instance.PlayBGM(BGM.WinCond);
             _winMenu.alpha = 1;
@@ -92,9 +100,16 @@ namespace TKM
 
             _inputReader.EnableUIInput();
         }
-
         private void OnLoseConditions()
         {
+            StartCoroutine(HandleLoseWithDelay());
+        }
+
+        private IEnumerator HandleLoseWithDelay()
+        {
+            float delayTime = 2f;
+            yield return new WaitForSecondsRealtime(delayTime);
+
             _overlay.alpha = 0f;
             AudioManager.Instance.PlayBGM(BGM.LoseCond);
             _loseMenu.alpha = 1;
@@ -103,7 +118,6 @@ namespace TKM
 
             _inputReader.EnableUIInput();
         }
-
         void OnTriggerTutorial(int index)
         {
             _overlay.alpha = 0f;
