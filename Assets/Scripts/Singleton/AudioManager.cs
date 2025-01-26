@@ -164,6 +164,30 @@ namespace TKM
             Level_3.Stop();
         }
 
+        public bool CheckBGM(BGM bgmType)
+        {
+            switch (bgmType)
+            {
+                case BGM.MainMenu:
+                    return MainMenu.isPlaying;
+                case BGM.LoseCond:
+                    return LoseCond.isPlaying;
+                case BGM.WinCond:
+                    return WinCond.isPlaying;
+                case BGM.Level_1:
+                    return Level_1.isPlaying;
+                case BGM.Level_2:
+                    return Level_2.isPlaying;
+                case BGM.Level_3:
+                    return Level_3.isPlaying;
+                default:
+                    Debug.LogWarning("Unknown BGM type");
+                    break;
+            }
+            return false;
+
+        }
+
         void Update()
         {
             // Map F1-F12 to specific sound effects

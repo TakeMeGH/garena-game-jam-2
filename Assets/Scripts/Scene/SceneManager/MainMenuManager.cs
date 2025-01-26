@@ -12,7 +12,9 @@ namespace TKM
 
         void Start()
         {
-            // AudioManager.Instance.PlayBGM(BGM.MainMenu);
+            if (!AudioManager.Instance.CheckBGM(BGM.MainMenu))
+                AudioManager.Instance.PlayBGM(BGM.MainMenu);
+            Time.timeScale = 1f;
             _inputReader.EnableUIInput();
         }
 
