@@ -482,15 +482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 2519942634266071197, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_ColorMultiplier
@@ -702,15 +702,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.8666667
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 3943132414308999587, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_ColorMultiplier
@@ -862,15 +862,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 33c8a805ffa276f43b22ad8baee98d8f, type: 3}
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.8679245
+      value: 0.5754717
       objectReference: {fileID: 0}
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.8679245
+      value: 0.5754717
       objectReference: {fileID: 0}
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.8679245
+      value: 0.5754717
       objectReference: {fileID: 0}
     - target: {fileID: 7506176338066058830, guid: 4acb7357f14423747b061eb9fb2fd786, type: 3}
       propertyPath: m_Colors.m_ColorMultiplier
