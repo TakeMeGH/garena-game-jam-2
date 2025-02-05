@@ -10,6 +10,7 @@ namespace TKM
         public void Activate()
         {
             _onLostCondition.RaiseEvent();
+            BloomFlashTogler.Instance.TriggerBloom();
             Destroy(gameObject);
         }
     }

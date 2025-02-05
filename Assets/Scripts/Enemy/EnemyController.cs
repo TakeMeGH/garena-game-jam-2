@@ -78,11 +78,15 @@ namespace TKM
             OnAnimationFinished?.Invoke();
         }
 
-        public void SetRandomData(float posX, float posY, float IdleTime)
+        public void SetRandomData(float posX, float posY, float IdleTime, int sortingLayer)
         {
             TargetX = posX;
             TargetY = posY;
             IdleWaitTime = IdleTime;
+            if (TryGetComponent<SpriteRenderer>(out var sp))
+            {
+                sp.sortingOrder = sortingLayer;
+            }
         }
 
     }

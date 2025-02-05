@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -107,6 +106,7 @@ namespace TKM
 
         private IEnumerator HandleLoseWithDelay()
         {
+            // Add your desired delay time (e.g., 2 seconds)
             float delayTime = 2f;
             yield return new WaitForSecondsRealtime(delayTime);
 

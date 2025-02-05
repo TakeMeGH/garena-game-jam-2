@@ -52,6 +52,7 @@ namespace TKM
         int _killCount = 0;
         int _waveIndex = -1;
         public int TotalKillCount = 0;
+        int _spawnCounter = 0;
 
         private void Start()
         {
@@ -122,7 +123,7 @@ namespace TKM
             }
 
             float randomPosY = UnityEngine.Random.Range(PosY.Left, PosY.Right);
-            spawnedEnemy.GetComponent<EnemyController>().SetRandomData(randomPosX, randomPosY, _waves[_waveIndex].IdleTime);
+            spawnedEnemy.GetComponent<EnemyController>().SetRandomData(randomPosX, randomPosY, _waves[_waveIndex].IdleTime, (++_spawnCounter) + 5);
         }
         private void SpawnPerks()
         {
